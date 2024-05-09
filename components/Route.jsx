@@ -1,5 +1,6 @@
 import { Text, View, ScrollView } from "react-native";
 import styles from '../stylesheets/global'
+import BottomBar from "./Bottom";
 
 const Route = () => {
 
@@ -23,13 +24,13 @@ const Route = () => {
       
 
     return(
-        <View>
+        <View style = {styles.root}>
             <ScrollView style = {styles.sv}>
             {
-            tmtBusStops.map((stop) => (
+            tmtBusStops.map((stop, idx) => (
 
                 <View style = {styles.busstop}>
-                    <Text style = {styles.bstext}>
+                    <Text key = {idx} style = {styles.bstext}>
                         {stop}
                     </Text>
                 </View>
@@ -38,8 +39,7 @@ const Route = () => {
         }
             </ScrollView>
        
-        {/*<BottomBar>
-        </BottomBar>*/}
+        <BottomBar />
         </View>
     )
 }

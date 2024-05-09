@@ -31,6 +31,22 @@ const styles = StyleSheet.create({
     bstext: {
 
         fontSize: 20
+    },
+
+    bottom: {
+
+        flexDirection: 'row',
+        width: '100%',
+        backgroundColor: '#edd328',
+        justifyContent: 'space-evenly',
+        padding: 15
+    },
+
+    icons: {
+
+        
+        height: 30,
+        width: 30
     }
 
 })
