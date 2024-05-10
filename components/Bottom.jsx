@@ -13,7 +13,7 @@ const BottomBar = () => {
     return(
     
     <View style = {styles.bottom}>
-        <TouchableOpacity onPress = {() => {navigation.navigate('Route')}}>
+        <TouchableOpacity onPress = {() => {navigation.navigate('RoutesList')}}>
             <Image source = {route} style = {styles.icons}/>
         </TouchableOpacity>
         <TouchableOpacity onPress = {() => {navigation.navigate('Chat')}}>

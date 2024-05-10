@@ -1,4 +1,4 @@
-import { View, Image, Text, TextInput, TouchableOpacity } from 'react-native';
+import { View, Image, Text, TextInput, TouchableOpacity, ScrollView} from 'react-native';
 import {useState} from 'react'
 import styles from '../stylesheets/chat'
 import BottomBar from "./Bottom";
@@ -6,35 +6,41 @@ import BottomBar from "./Bottom";
 const Chat = () => {
 
     const [chats, changeChats] = useState(["hi"])
-
-    let entered_input = " "
+    const [entered_input, changeMsg] = useState()
 
     const sent = require('../assets/send.png')
 
     return(
     
     <View style = {styles.root}>
-        <View style = {styles.cb}>
-            {
-                chats.map((chat) => (
-                    <View style = {styles.cm}>
-                        <Text>{chat}</Text>
-                    </View>
-                ))
-            }
-        </View>
+        <ScrollView>
+            <View style = {styles.cb}>
+                
+                {
+                    chats.map((chat) => (
+                        <View style = {styles.cm}>
+                            <Text>{chat}</Text>
+                        </View>
+                    ))
+                }
+            </View>
+        </ScrollView>
         <View style = {styles.chatbar}>
-            <TextInput style = {styles.ib} onChangeText = {(val) => {entered_input = val}}/>
+            <TextInput style = {styles.ib} 
+                onChangeText = {(val) => {changeMsg(val)}}
+                value = {entered_input}/>
             <TouchableOpacity onPress = {
                 
                 () => {
 
-                    console.log("Entered message = ",entered_input)
+                    if(entered_input.length > 0){
 
-                    const newMsgs = [...chats, entered_input]
+                        const newMsgs = [...chats, entered_input]
                     
-                    changeChats(newMsgs) 
-                    entered_input = " "
+                        changeChats(newMsgs) 
+                        changeMsg()
+                    }
+                        
 
                     }
                 }>
