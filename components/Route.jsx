@@ -27,10 +27,10 @@ const Route = () => {
         <View style = {styles.root}>
             <ScrollView style = {styles.sv}>
             {
-            tmtBusStops.map((stop, idx) => (
+            tmtBusStops.map((stop) => (
 
                 <View style = {styles.busstop}>
-                    <Text key = {idx} style = {styles.bstext}>
+                    <Text style = {styles.bstext}>
                         {stop}
                     </Text>
                 </View>
