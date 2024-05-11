@@ -19,13 +19,13 @@ const styles = StyleSheet.create({
     sv: {
 
         marginTop: 30,
-        width: '90%'
     },
 
     busstop: {
 
         marginTop: 30,
-        marginLeft: 30
+        marginLeft: 30,
+        
     },
 
     bstext: {
@@ -44,9 +44,41 @@ const styles = StyleSheet.create({
 
     icons: {
 
-        
         height: 30,
         width: 30
+    },
+
+    cont : {
+
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: 10,
+        flexGrow: 1
+    },
+
+    picker: {
+
+        height: 150,
+        width: 200,
+        marginTop: -50,
+        marginBottom: -25,
+
+    },
+
+    big: {
+
+        fontSize: 20
+    },
+
+    buspath: {
+
+        height: '30',
+        width: 10,
+        backgroundColor: 'black',
+        marginBottom: -30,
+        marginLeft: 15
+        
     }
 
 })

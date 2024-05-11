@@ -29,10 +29,15 @@ const Route = () => {
             {
             tmtBusStops.map((stop) => (
 
-                <View style = {styles.busstop}>
-                    <Text style = {styles.bstext}>
-                        {stop}
-                    </Text>
+                <View style = {{flexDirection: 'row'}}>
+
+                    <View style = {styles.buspath}></View>
+                    <View style = {styles.busstop}>
+                        <Text style = {styles.bstext}>
+                            {stop}
+                        </Text>
+                    </View>
+
                 </View>
             ))
             

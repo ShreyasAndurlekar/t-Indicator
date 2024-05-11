@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import Route from './components/Route'; 
 import Home from './components/Home';
 import Chat from './components/Chat';
+import Contribute from './components/Contribute';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -13,6 +14,7 @@ const RouteDrawer = () => {
     <Drawer.Navigator>
       <Drawer.Screen name="RoutesList" component={Route} options={() => ({ headerShown: false })} />
       <Drawer.Screen name="Chat" component={Chat} options={() => ({ headerShown: false })}/>
+      <Drawer.Screen name="Contribute" component={Contribute} options={() => ({ headerShown: false })}/>
     </Drawer.Navigator>
   );
 };
@@ -26,7 +28,7 @@ const App = () => {
           component={Home}
           options={() => ({ headerShown: false })}
         />
-        <Stack.Screen name="Route" component={RouteDrawer} />
+        <Stack.Screen name="Pawar Nagar" component={RouteDrawer} />
       </Stack.Navigator>
     </NavigationContainer>
   );
