@@ -2,7 +2,8 @@ import BottomBar from "./Bottom"
 import styles from '../stylesheets/global'
 import { Text, View, Button } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
-import {useState} from 'react'
+import {useState, useContext} from 'react'
+import { BusContext } from "../functions/bus";
 
 const tmtBusStops = [
     "PAWAR NAGAR",
@@ -22,7 +23,10 @@ const tmtBusStops = [
     "THANE STATION"
   ];
 
+
 const Contribute = () => {
+
+    const {changeBusStop} = useContext(BusContext)
 
     const [selectedBus, setSelectedBus] = useState("Yellow Bus")
     const [selectedStop, setSelectedStop] = useState("Pawar Nagar")
@@ -73,7 +77,12 @@ const Contribute = () => {
                 </Picker>
 
                 <View style = {{flexDirection: 'row', gap: 20}}> 
-                    <Button title = "SUBMIT" />
+                    <Button title = "SUBMIT" onPress = 
+                    
+                    {
+
+                        changeBusStop(selectedStop)
+                    }/>
                     <Button title = "USE LOCATION" />
                 </View>
                 

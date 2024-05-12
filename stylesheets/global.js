@@ -59,10 +59,10 @@ const styles = StyleSheet.create({
 
     picker: {
 
-        height: 150,
+        height: 30,         // should be 150 for mobile
         width: 200,
-        marginTop: -50,
-        marginBottom: -25,
+        /*marginTop: -50,
+        marginBottom: -25,*/
 
     },
 
@@ -77,7 +77,9 @@ const styles = StyleSheet.create({
         width: 10,
         backgroundColor: 'black',
         marginBottom: -30,
-        marginLeft: 15
+        marginLeft: 15,
+        justifyContent: 'center',
+        alignItems: 'center'
         
     }
 
