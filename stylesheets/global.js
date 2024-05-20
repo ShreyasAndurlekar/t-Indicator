@@ -13,7 +13,8 @@ const styles = StyleSheet.create({
         width: 200,
         padding: 10,
         marginTop: 50,
-        marginLeft: 20
+        marginLeft: 20,
+        marginBottom: -40
     },
 
     sv: {

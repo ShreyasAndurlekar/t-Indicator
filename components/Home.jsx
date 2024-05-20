@@ -10,11 +10,17 @@ const Home = () => {
     return(
         <View style = {styles.root}>
             <Navbar />
-            <TouchableOpacity style = {styles.pnroute} onPress = {() => {navigation.navigate('Pawar Nagar')}}>
-                <Text>
-                    PAWAR NAGAR
-                </Text>
+            <TouchableOpacity style={styles.pnroute} onPress={() => { navigation.navigate("Route", { busRoute: 0 }) }}>
+
+                <Text>PAWAR NAGAR</Text>
+
             </TouchableOpacity>
+            <TouchableOpacity style={styles.pnroute} onPress={() => { navigation.navigate("Route", { busRoute: 1 }) }}>
+
+                <Text>ANAND NAGAR</Text>
+
+            </TouchableOpacity>
+
         </View>
     )
 }

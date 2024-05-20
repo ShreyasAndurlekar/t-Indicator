@@ -5,28 +5,10 @@ import { Picker } from '@react-native-picker/picker';
 import {useState, useContext} from 'react'
 import { BusContext } from "../functions/bus";
 
-const tmtBusStops = [
-    "PAWAR NAGAR",
-    "MUNICIPAL SCHOOL",
-    "EDENWOOD",
-    "LOKPURAM",
-    "VASANT VIHAR",
-    "JAWAHAR NAGAR",
-    "GANDHI NAGAR",
-    "VOLTAS COMPANY",
-    "SUBHASH NAGAR",
-    "OSWAL PARK",
-    "MUKTAI NAGAR",
-    "UTHALSAR",
-    "COURTNAKA",
-    "TALAO PALI",
-    "THANE STATION"
-  ];
-
-
 const Contribute = () => {
 
     const {changeBusStop} = useContext(BusContext)
+    const {busStops} = useContext(BusContext)
 
     const [selectedBus, setSelectedBus] = useState("Yellow Bus")
     const [selectedStop, setSelectedStop] = useState("Pawar Nagar")
@@ -55,7 +37,7 @@ const Contribute = () => {
                         style = {styles.picker}>
                 
                 {
-                    tmtBusStops.map((stop) => (
+                    busStops.map((stop) => (
 
                         <Picker.Item label={stop} value={stop} />
 

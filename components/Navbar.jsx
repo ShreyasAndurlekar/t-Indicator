@@ -1,9 +1,11 @@
 import { View, Text, Image, TouchableOpacity } from "react-native"
 import navbar_styles from '../stylesheets/navbar'
+import { useNavigation } from '@react-navigation/native';
 
 const Navbar = () => {
 
     const icon = require('../assets/user.png')
+    const navigation = useNavigation();
 
     return(
         <View>
@@ -15,7 +17,7 @@ const Navbar = () => {
                         TMT App
                     </Text>
                 </View>
-                <TouchableOpacity onPress = { console.log()}>
+                <TouchableOpacity onPress = {() => {navigation.navigate("Account")}}>
                     <Image source={icon} style={navbar_styles.navicon} />
                 </TouchableOpacity>
             </View>

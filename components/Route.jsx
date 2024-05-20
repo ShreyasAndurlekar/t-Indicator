@@ -7,36 +7,20 @@ import Bus from "./Bus";
 
 const Route = () => {
 
-    const {busStop} = useContext(BusContext)
-    const [buz, renderBus] = useState(false)
+    const {busStops} = useContext(BusContext)
+    const {busStop} = useContext(BusContext)    // Assuming this is the part where the red highlight thing is
 
-    useEffect(() => { })   // React cannot update a component while rendering another component "Contribute",
+    useEffect(() => { 
+           
+    })   // React cannot update a component while rendering another component "Contribute",
                             // Therefore only update whenRoute is on screen.
-
-    const tmtBusStops = [
-        "PAWAR NAGAR",
-        "MUNICIPAL SCHOOL",
-        "EDENWOOD",
-        "LOKPURAM",
-        "VASANT VIHAR",
-        "JAWAHAR NAGAR",
-        "GANDHI NAGAR",
-        "VOLTAS COMPANY",
-        "SUBHASH NAGAR",
-        "OSWAL PARK",
-        "MUKTAI NAGAR",
-        "UTHALSAR",
-        "COURTNAKA",
-        "TALAO PALI",
-        "THANE STATION"
-      ];
       
 
     return(
         <View style = {styles.root}>
             <ScrollView style = {styles.sv}>
             {
-            tmtBusStops.map((stop) => (
+            busStops.map((stop) => (
 
                 <View style = {{flexDirection: 'row'}}>
 
