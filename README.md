@@ -1,0 +1,1 @@
+Since there are no MongoDB libraries for React, You need to make a Node.js server (API) that communicates information to React for database information. Download both branches and run the Node.js server first and then run React to access database feature. Use your own MongoDB Cluster ofcourse. Reaplce the DB_URI with your own MongoDB URI.
