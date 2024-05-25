@@ -1,14 +1,41 @@
 import { View, Image, Text, TextInput, TouchableOpacity, ScrollView} from 'react-native';
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import styles from '../stylesheets/chat'
 import BottomBar from "./Bottom";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Chat = () => {
 
-    const [chats, changeChats] = useState(["hi"])
     const [entered_input, changeMsg] = useState()
-
+    
     const sent = require('../assets/send.png')
+    const [storedUsername, setStoredUsername] = useState('guest'); // due to async nature, we need to keep this a state
+
+    useEffect(() => {
+
+        const fetchUsername = async () => {
+            try {
+
+                const storedUsername = await AsyncStorage.getItem('Username');
+
+                console.log(storedUsername)
+
+                if (storedUsername) {
+
+                    setStoredUsername(storedUsername);
+                }
+
+                console.log("Username = ",storedUsername)
+
+            } catch (error) {
+                console.error('Error fetching username:', error);
+            }
+        };
+
+        fetchUsername();
+    }, []);
+
+    const [chats, changeChats] = useState([{user: storedUsername, msg: "hi"}])
 
     return(
     
@@ -18,8 +45,11 @@ const Chat = () => {
                 
                 {
                     chats.map((chat) => (
-                        <View style = {styles.cm}>
-                            <Text>{chat}</Text>
+                        <View style = {styles.overallcm}>
+                            <Text style = {styles.user}>~{chat.user}</Text>
+                            <View style = {styles.cm}>
+                                <Text>{chat.msg}</Text>
+                            </View>
                         </View>
                     ))
                 }
@@ -35,10 +65,12 @@ const Chat = () => {
 
                     if(entered_input.length > 0){
 
-                        const newMsgs = [...chats, entered_input]
+                        EI = {user: storedUsername, msg: entered_input}
+
+                        const newMsgs = [...chats, EI]
                     
                         changeChats(newMsgs) 
-                        changeMsg()
+                        changeMsg('')
                     }
                         
 

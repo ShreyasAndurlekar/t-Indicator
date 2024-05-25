@@ -7,7 +7,7 @@ import Bus from "./Bus";
 
 const Route = () => {
 
-    const {busStops} = useContext(BusContext)
+    const {busStops} = useContext(BusContext)   // busStops is where the array is
     const {busStop} = useContext(BusContext)    // Assuming this is the part where the red highlight thing is
 
     useEffect(() => { 
@@ -20,9 +20,9 @@ const Route = () => {
         <View style = {styles.root}>
             <ScrollView style = {styles.sv}>
             {
-            busStops.map((stop) => (
+            busStops.map((stop, idx) => (
 
-                <View style = {{flexDirection: 'row'}}>
+                <View key = {idx} style = {{flexDirection: 'row'}}>
 
                     <View style = {styles.buspath}>
 

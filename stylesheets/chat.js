@@ -38,14 +38,26 @@ const styles = StyleSheet.create({
         width: 35,
     },
 
-    cm: {
+    overallcm: {
 
-        padding: 10,
+        flexDirection: 'column',
         backgroundColor: 'lightgray',
         margin: 10
+    },
+
+    user: {
+
+        padding: 5,  
+        color: '#731003'
         
+    },
+
+    cm: {
+
+        padding: 10,   
 
     }
+
 })
 
 export default styles

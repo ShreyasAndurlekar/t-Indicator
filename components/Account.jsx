@@ -1,20 +1,25 @@
 // App.js
 import React, { useState } from 'react';
 import { SafeAreaView,StyleSheet,View,Text,TextInput,Button,Alert,} from 'react-native';
-import { createAccount, signIn } from '../functions/database';
+import { createAccount, signIn, signOut } from '../functions/database';
+import { useNavigation } from '@react-navigation/native';
 
 const Account = () => {
+
+    const navigation = useNavigation();
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
     const handleSubmit = async () => {
+
         if (username === '' || password === '') {
             Alert.alert('Error', 'Username and password are required');
             return;
         }
 
         const newAccount = { username, password };
+        
         try {
             const createdAccount = await createAccount(newAccount);
             setUsername('');
@@ -33,7 +38,7 @@ const Account = () => {
 
         try {
             const userData = await signIn({ username, password });
-            Alert.alert('Success', 'Signed in successfully');
+            navigation.navigate('Home');
             
         } catch (error) {
         
@@ -41,6 +46,12 @@ const Account = () => {
             Alert.alert('Error', 'Could not sign in');
         }
     };
+
+    const handleLogout = async() => {
+
+        signOut()
+        navigation.navigate("Home")
+    }
 
     return (
         <SafeAreaView style={styles.container}>
@@ -64,6 +75,9 @@ const Account = () => {
                     </View>
                     <View style = {styles.b}>
                         <Button title="Sign In" onPress={handleSignIn}/>
+                    </View>
+                    <View style = {styles.b}>
+                        <Button title="Logout" onPress={handleLogout}/>
                     </View>
                     
                     

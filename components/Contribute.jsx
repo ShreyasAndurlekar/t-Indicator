@@ -37,9 +37,9 @@ const Contribute = () => {
                         style = {styles.picker}>
                 
                 {
-                    busStops.map((stop) => (
+                    busStops.map((stop, idx) => (
 
-                        <Picker.Item label={stop} value={stop} />
+                        <Picker.Item label={stop} value={stop} key = {idx} />
 
                     ))
                 }
