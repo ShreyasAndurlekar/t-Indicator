@@ -12,12 +12,12 @@ const Home = () => {
             <Navbar />
             <TouchableOpacity style={styles.pnroute} onPress={() => { navigation.navigate("Route", { busRoute: 0 }) }}>
 
-                <Text>PAWAR NAGAR</Text>
+                <Text style = {{fontWeight: 'bold'}}>पवार नगर</Text>
 
             </TouchableOpacity>
             <TouchableOpacity style={styles.pnroute} onPress={() => { navigation.navigate("Route", { busRoute: 1 }) }}>
 
-                <Text>ANAND NAGAR</Text>
+                <Text style = {{fontWeight: 'bold'}}>धर्माचापडा</Text>
 
             </TouchableOpacity>
 
