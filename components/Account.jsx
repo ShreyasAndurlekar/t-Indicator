@@ -119,4 +119,6 @@ const styles = StyleSheet.create({
     }
 });
 
+
+
 export default Account;
