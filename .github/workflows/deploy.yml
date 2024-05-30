@@ -22,7 +22,7 @@ jobs:
       run: npm install
 
     - name: Build the project
-      run: expo build:web
+      run: npx expo build:web
 
     - name: Deploy to Netlify
       uses: nwtgck/actions-netlify@v1.2.3
