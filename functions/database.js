@@ -1,8 +1,10 @@
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const API_URL = process.env.ROUTE_FOR_SIGNUP;
-const SIGNIN_API_URL = process.env.ROUTE_FOR_AUTH;
+const API_URL = "https://userdetails-five.vercel.app/accounts"
+const SIGNIN_API_URL = 	"https://userdetails-five.vercel.app/auth"
+
+console.log("Does this work?",API_URL)
 
 export const signIn = async (credentials) => {
     try {
