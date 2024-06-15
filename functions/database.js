@@ -7,6 +7,8 @@ const SIGNIN_API_URL = process.env.ROUTE_FOR_AUTH;
 export const signIn = async (credentials) => {
     try {
 
+        console.log("is this correct",API_URL)
+
         const response = await axios.post(SIGNIN_API_URL, credentials);
         const token  = response.data.token
         const username = response.data.username
