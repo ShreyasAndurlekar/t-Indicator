@@ -92,6 +92,14 @@ const App = () => {
             <Stack.Screen
                 name="Route"
                 component={RouteDrawer}
+                options={{
+
+                headerStyle: {
+                    backgroundColor: 'red', 
+                  },
+                headerBackImageSource: require('./assets/back-icon.png')
+                  }}
+                  
             />
             <Stack.Screen
                 name="Account"
