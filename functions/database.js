@@ -1,9 +1,6 @@
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-//const API_URL = "https://userdetails-five.vercel.app/accounts"
-//const SIGNIN_API_URL = 	"https://userdetails-five.vercel.app/auth"
-
 const API_URL = "http://localhost:5000/accounts"
 const SIGNIN_API_URL = 	"http://localhost:5000/auth"
 const RETRIEVEMESSAGES_URL = "http://localhost:5000/messages"
