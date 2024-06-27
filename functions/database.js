@@ -1,8 +1,11 @@
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const API_URL = "https://userdetails-five.vercel.app/accounts"
-const SIGNIN_API_URL = 	"https://userdetails-five.vercel.app/auth"
+//const API_URL = "https://userdetails-five.vercel.app/accounts"
+//const SIGNIN_API_URL = 	"https://userdetails-five.vercel.app/auth"
+
+const API_URL = "http://localhost:5000/accounts"
+const SIGNIN_API_URL = 	"http://localhost:5000/auth"
 
 console.log("Does this work?",API_URL)
 
@@ -13,7 +16,8 @@ export const signIn = async (credentials) => {
         const token  = response.data.token
         const username = response.data.username
 
-        await AsyncStorage.setItem('Username', username);
+        await AsyncStorage.setItem('Token', token);
+        await AsyncStorage.setItem('Username',username);
         
         const storedUsername = await AsyncStorage.getItem('Username');
 

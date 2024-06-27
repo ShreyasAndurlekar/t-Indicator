@@ -1,4 +1,4 @@
-import { View, Image, Text, TextInput, TouchableOpacity, ScrollView} from 'react-native';
+import { View, Image, Text, TextInput, TouchableOpacity, ScrollView, Alert} from 'react-native';
 import {useState, useEffect} from 'react'
 import styles from '../stylesheets/chat'
 import BottomBar from "./Bottom";
@@ -44,8 +44,8 @@ const Chat = () => {
             <View style = {styles.cb}>
                 
                 {
-                    chats.map((chat) => (
-                        <View style = {styles.overallcm}>
+                    chats.map((chat, idx) => (
+                        <View style = {styles.overallcm} key = {idx}>
                             <Text style = {styles.user}>~{chat.user}</Text>
                             <View style = {styles.cm}>
                                 <Text>{chat.msg}</Text>
@@ -63,17 +63,28 @@ const Chat = () => {
                 
                 () => {
 
-                    if(entered_input.length > 0){
+                    if(storedUsername == "guest"){
 
-                        EI = {user: storedUsername, msg: entered_input}
+                        Alert.alert('Feature Disabled', 'Log in to chat', [
+                            
+                            {text: 'OK', onPress: () => console.log('OK Pressed')},
+                          
+                        ]);
 
-                        const newMsgs = [...chats, EI]
-                    
-                        changeChats(newMsgs) 
-                        changeMsg('')
                     }
-                        
+                    else{
 
+                        if(entered_input.length > 0){
+
+                            EI = {user: storedUsername, msg: entered_input}
+
+                            const newMsgs = [...chats, EI]
+                        
+                            changeChats(newMsgs) 
+                            changeMsg('')
+                        }  
+
+                        }
                     }
                 }>
                 <Image source = {sent} style = {styles.ic}/>

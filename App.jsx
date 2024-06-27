@@ -97,6 +97,7 @@ const App = () => {
                 headerStyle: {
                     backgroundColor: 'red', 
                   },
+
                 headerBackImageSource: require('./assets/back-icon.png')
                   }}
                   

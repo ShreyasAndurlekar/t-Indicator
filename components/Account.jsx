@@ -26,7 +26,11 @@ const Account = () => {
             setPassword('');
         } catch (error) {
             console.error('Error creating account:', error);
-            Alert.alert('Error', 'Could not create account');
+            Alert.alert('Error creating account', 'Similar username already exists', [
+                            
+                {text: 'OK', onPress: () => console.log('OK Pressed')},
+              
+            ]);
         }
     };
 
@@ -43,7 +47,11 @@ const Account = () => {
         } catch (error) {
         
             console.error('Error signing in:', error);
-            Alert.alert('Error', 'Could not sign in');
+            Alert.alert('Error signing in:', 'Non-existent Password/User', [
+                            
+                {text: 'OK', onPress: () => console.log('OK Pressed')},
+              
+            ]);
         }
     };
 
@@ -96,7 +104,7 @@ const styles = StyleSheet.create({
     sectionContainer: {
         marginTop: 32,
         paddingHorizontal: 24,
-        width: 400,
+        width: 600,
         alignItems: 'center'
     },
     sectionTitle: {
@@ -104,7 +112,7 @@ const styles = StyleSheet.create({
         fontWeight: '600',
         color: '#333',
         textAlign: 'center',
-        marginBottom: 20
+        marginBottom: 40,
     },
     input: {
         height: 40,
@@ -112,6 +120,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         marginBottom: 12,
         padding: 8,
+        width: 200
     },
     b:{
         width: 100,
