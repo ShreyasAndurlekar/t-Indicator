@@ -10,10 +10,13 @@ const Route = () => {
     const {busStops} = useContext(BusContext)   // busStops is where the array is
     const {busStop} = useContext(BusContext)    // Assuming this is the part where the red highlight thing is
 
+
+    // {} is used to destructure the object
+    
     useEffect(() => { 
            
-    })   // React cannot update a component while rendering another component "Contribute",
-                            // Therefore only update whenRoute is on screen.
+    })  // React cannot update a component while rendering another component "Contribute",
+        // Therefore only update whenRoute is on screen.
       
 
     return(

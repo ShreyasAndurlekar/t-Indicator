@@ -1,8 +1,10 @@
 import { View, Image, Text, TextInput, TouchableOpacity, ScrollView, Alert} from 'react-native';
-import {useState, useEffect} from 'react'
+import {useState, useEffect, useContext} from 'react'
 import styles from '../stylesheets/chat'
 import BottomBar from "./Bottom";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { retrieveMessages, sendMessages } from '../functions/database';
+import { BusContext } from "../functions/bus";
 
 const Chat = () => {
 
@@ -10,6 +12,13 @@ const Chat = () => {
     
     const sent = require('../assets/send.png')
     const [storedUsername, setStoredUsername] = useState('guest'); // due to async nature, we need to keep this a state
+    const [chats, changeChats] = useState([])
+
+    const {busStops} = useContext(BusContext)
+    const routename = busStops[0]
+
+    // basically since the requests take time, React might render stuff before the stuff is even retrieved from AsyncStorage or Database
+    // Therefore we need to do a useEffect before React renders the stuff
 
     useEffect(() => {
 
@@ -32,10 +41,21 @@ const Chat = () => {
             }
         };
 
+        const fetchData = async () => {
+
+            console.log("Hey this is the routename",routename)
+            const messagesarray = await retrieveMessages(routename) // remember to use await, if you did not use await, it would execute the next code without waiting
+            console.log('Transformed messages',messagesarray)
+            changeChats(messagesarray)
+            
+        }
+
         fetchUsername();
+        fetchData();
+
     }, []);
 
-    const [chats, changeChats] = useState([{user: storedUsername, msg: "hi"}])
+    // RETRIEVE MESSAGES
 
     return(
     
@@ -46,9 +66,9 @@ const Chat = () => {
                 {
                     chats.map((chat, idx) => (
                         <View style = {styles.overallcm} key = {idx}>
-                            <Text style = {styles.user}>~{chat.user}</Text>
+                            <Text style = {styles.user}>~{chat.sender}</Text>
                             <View style = {styles.cm}>
-                                <Text>{chat.msg}</Text>
+                                <Text>{chat.message}</Text>
                             </View>
                         </View>
                     ))
@@ -76,7 +96,8 @@ const Chat = () => {
 
                         if(entered_input.length > 0){
 
-                            EI = {user: storedUsername, msg: entered_input}
+                            EI = {sender: storedUsername, message: entered_input}
+                            sendMessages(entered_input, storedUsername, routename)
 
                             const newMsgs = [...chats, EI]
                         

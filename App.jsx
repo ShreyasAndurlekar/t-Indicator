@@ -15,7 +15,6 @@ const Drawer = createDrawerNavigator();
 const RouteDrawer = ({ route }) => {
 
   const { busRoute } = route.params; // Accessing busRoute from route params
-  console.log(busRoute)
 
   const [busStop, changeBusStop] = useState("Pawar Nagar");
   const [busStops, changeBusStops] = useState([]);
@@ -39,7 +38,7 @@ const RouteDrawer = ({ route }) => {
           "THANE STATION"
       ],
       [
-        "ANAND NAGAR BUS DEPOT",
+        "ANAND NAGAR",
         "VIJAY NAGARI",
         "WAGHBIL",
         "DONGRI PADA",

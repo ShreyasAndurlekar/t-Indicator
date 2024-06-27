@@ -6,6 +6,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const API_URL = "http://localhost:5000/accounts"
 const SIGNIN_API_URL = 	"http://localhost:5000/auth"
+const RETRIEVEMESSAGES_URL = "http://localhost:5000/messages"
+const SENDMESSAGE_URL = "http://localhost:5000/send"
 
 console.log("Does this work?",API_URL)
 
@@ -50,3 +52,42 @@ export const signOut = async () => {
         throw error;
     }
 };
+
+export const retrieveMessages = async (routename) => {
+
+    try{
+
+        const response = await axios.get(RETRIEVEMESSAGES_URL, {
+            params: { routename }
+        })
+
+        const messages = response.data[0].messages.map(message => ({
+            message: message.message,
+            sender: message.sender,
+            createdAt: message.createdAt
+        }));
+
+        return messages;
+    }
+    catch (error) {
+        console.error('Error retrieving messages:', error);
+        throw error;
+    }
+}
+
+export const sendMessages = async (message, username, routename) => {
+
+    try{
+
+        await axios.post(SENDMESSAGE_URL, {
+            message,
+            username,
+            routename
+        });
+    
+    }
+    catch (error) {
+        console.error('Error sending messages:', error);
+        throw error;
+    }
+}
