@@ -1,18 +1,54 @@
 import BottomBar from "./Bottom"
 import styles from '../stylesheets/global'
-import { Text, View, Button } from 'react-native';
+import { Text, View, Button, Alert } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import {useState, useContext} from 'react'
 import { BusContext } from "../functions/bus";
+import * as Location from 'expo-location';
+import { getNearestLoc } from '../functions/database'
 
 const Contribute = () => {
 
     const {changeBusStop} = useContext(BusContext)
     const {busStops} = useContext(BusContext)
+    const {setColor} = useContext(BusContext)
 
-    const [selectedBus, setSelectedBus] = useState("Yellow Bus")
+    const [selectedBus, setSelectedBus] = useState("red")
     const [selectedStop, setSelectedStop] = useState("Pawar Nagar")
-    const [selectedOption, setSelectedOption] = useState("No")
+
+    const getLocation = async () => {
+
+            let { status } = await Location.requestForegroundPermissionsAsync();
+            if (status !== 'granted') {
+              console.error('Permission to access location was denied');
+              return;
+            }
+        
+            let location = await Location.getCurrentPositionAsync({});
+            const newloc = location.coords.latitude + ", " +  location.coords.longitude
+            const nearestLoc = await getNearestLoc(newloc)
+
+            let ok = 0
+
+            for(var i = 0; i < busStops.length; i++){
+
+                if(nearestLoc == busStops[i])
+                    ok = 1
+            }
+
+            if(ok == 0 || nearestLoc){
+
+                Alert.alert('Error', `Nearest place is ${nearestLoc}`, [        // I forget the tilted inverted commas
+                            
+                    {text: 'OK', onPress: () => console.log('OK Pressed')},
+                  
+                ]);
+            }
+            else{
+                
+            }
+
+    }
 
     return(
         <View style = {styles.root}>
@@ -21,19 +57,29 @@ const Contribute = () => {
                 <Text style = {styles.big}>Which bus?</Text>
 
                 <Picker selectedValue={selectedBus} 
-                        onValueChange={(itemValue) => setSelectedBus(itemValue)} 
+                        onValueChange={(itemValue) => {
+                            
+                            setSelectedBus(itemValue)
+                            setColor(itemValue)
+                        
+                        }}
                         style = {styles.picker}
                 >
-                    <Picker.Item label="Yellow Bus" value="y" />
-                    <Picker.Item label="Red Bus" value="r" />
-                    <Picker.Item label="AC Bus" value="a" />
+                    <Picker.Item label="Yellow Bus" value="yellow" />
+                    <Picker.Item label="Red Bus" value="red" />
+                    <Picker.Item label="AC Bus" value="white" />
 
                 </Picker>
 
                 <Text style = {styles.big}>Recently Passed Stop</Text>
 
                 <Picker selectedValue={selectedStop} 
-                        onValueChange={(itemValue) => setSelectedStop(itemValue)} 
+                        onValueChange={(itemValue) => {
+                            
+                            setSelectedStop(itemValue)
+                            changeBusStop(itemValue)
+                           
+                        }}
                         style = {styles.picker}>
                 
                 {
@@ -46,26 +92,8 @@ const Contribute = () => {
 
                 </Picker>
 
-                <Text style = {styles.big}>Ride Over?</Text>
-
-                <Picker selectedValue={selectedOption} 
-                        onValueChange={(itemValue) => setSelectedOption(itemValue)} 
-                        style = {styles.picker}
-                >
-
-                    <Picker.Item label="No" value="n" />
-                    <Picker.Item label="Yes" value="y" />
-
-                </Picker>
-
                 <View style = {{flexDirection: 'row', gap: 20}}> 
-                    <Button title = "SUBMIT" onPress = 
-                    
-                    {
-
-                        changeBusStop(selectedStop)
-                    }/>
-                    <Button title = "USE LOCATION" />
+                    <Button title = "USE LOCATION" onPress={getLocation} />
                 </View>
                 
             </View>

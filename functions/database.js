@@ -5,8 +5,25 @@ const API_URL = "https://userdetails-five.vercel.app/accounts"
 const SIGNIN_API_URL = 	"https://userdetails-five.vercel.app/auth"
 const RETRIEVEMESSAGES_URL = "https://userdetails-five.vercel.app/messages"
 const SENDMESSAGE_URL = "https://userdetails-five.vercel.app/send"
+const GETLOC_URL =  "https://userdetails-five.vercel.app/near"
 
-console.log("Does this work?",API_URL)
+export const getNearestLoc = async (location) => {
+
+    console.log(location)
+
+    try{
+
+        const response = await axios.get(GETLOC_URL, {
+            params: { location }
+        })
+
+        return response.data.nearest;
+    }
+    catch (error) {
+        console.error('Error retrieving messages:', error);
+        throw error;
+    }
+}
 
 export const signIn = async (credentials) => {
     try {
@@ -88,3 +105,4 @@ export const sendMessages = async (message, username, routename) => {
         throw error;
     }
 }
+

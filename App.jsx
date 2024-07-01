@@ -16,8 +16,9 @@ const RouteDrawer = ({ route }) => {
 
   const { busRoute } = route.params; // Accessing busRoute from route params
 
-  const [busStop, changeBusStop] = useState("Pawar Nagar");
+  const [busStop, changeBusStop] = useState("Pawar Nagar"); // glowy thing
   const [busStops, changeBusStops] = useState([]);
+  const [color, setColor] = useState("red")
 
   const tmtBusStops = [
       [
@@ -66,7 +67,7 @@ const RouteDrawer = ({ route }) => {
   }, [busRoute]);
 
   return (
-      <BusContext.Provider value={{ busStop, busStops, changeBusStop }}>
+      <BusContext.Provider value={{ busStop, busStops, changeBusStop, setColor, color }}>
           <Drawer.Navigator>
               <Drawer.Screen name="RoutesList" component={Route} options={() => ({ headerShown: false })} />
               <Drawer.Screen name="Chat" component={Chat} options={() => ({ headerShown: false })} />

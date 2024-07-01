@@ -1,13 +1,13 @@
 import { View } from 'react-native';
 
 
-function Bus() {
+function Bus(props) {
   return (
     <View style = {{
 
         height: 20,
         width: 20,
-        backgroundColor : "red",
+        backgroundColor : props.clr,
         borderRadius: 20
 
     }}>
