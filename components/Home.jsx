@@ -8,20 +8,20 @@ const Home = () => {
     const navigation = useNavigation();
 
     return(
-        <View style = {styles.root}>
-            <Navbar />
-            <TouchableOpacity style={styles.pnroute} onPress={() => { navigation.navigate("Route", { busRoute: 0 }) }}>
+            <View style = {{ flex: 1 }}>
+                <Navbar />
+                <TouchableOpacity style={styles.pnroute} onPress={() => { navigation.navigate("Route", { busRoute: 0 }) }}>
 
-                <Text style = {{fontWeight: 'bold'}}>पवार नगर</Text>
+                    <Text style = {{fontWeight: 'bold'}}>पवार नगर</Text>
 
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.pnroute} onPress={() => { navigation.navigate("Route", { busRoute: 1 }) }}>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.pnroute} onPress={() => { navigation.navigate("Route", { busRoute: 1 }) }}>
 
-                <Text style = {{fontWeight: 'bold'}}>धर्माचापडा</Text>
+                    <Text style = {{fontWeight: 'bold'}}>धर्माचापडा</Text>
 
-            </TouchableOpacity>
+                </TouchableOpacity>
 
-        </View>
+            </View>
     )
 }
 

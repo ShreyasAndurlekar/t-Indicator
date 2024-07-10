@@ -2,9 +2,15 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
 
+    body:{
+
+        backgroundColor: 'rgba(255, 99, 71, 1)'
+    },
+
     root: {
 
-        flex: 1
+        flex: 1,
+
     },
 
     pnroute: {

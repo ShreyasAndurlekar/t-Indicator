@@ -7,12 +7,13 @@ const navbar_styles = StyleSheet.create({
         flexDirection: 'row', 
         alignItems: 'center', 
         width: '100%',
-        height: 70,
+        height: 100,
         backgroundColor: 'red',
     },
 
     textContainer: {
         flex: 1, 
+        marginTop: 30
     },
 
     navtext: {
@@ -28,13 +29,8 @@ const navbar_styles = StyleSheet.create({
         marginRight: 10,
         width: 40,
         height: 40,
+        marginTop: 30
     },
-
-    mini: {
-
-        height: 21,
-        backgroundColor: 'rgba(255, 99, 71, 1)'
-    }
 
     
 })

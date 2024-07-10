@@ -9,9 +9,7 @@ const Navbar = () => {
 
     return(
         <View>
-            <View style = {navbar_styles.mini}>
-                </View>
-                <View style={navbar_styles.navbar}>
+            <View style={navbar_styles.navbar}>
                 <View style={navbar_styles.textContainer}>
                     <Text style={navbar_styles.navtext}>
                         TMT App

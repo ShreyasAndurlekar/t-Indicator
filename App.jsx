@@ -9,6 +9,10 @@ import Account from './components/Account'
 import { BusContext } from './functions/bus';
 import { useState, useEffect } from 'react';
 
+// IMPORTANT REGARDING NAVIATION LIBRARY.
+
+// you need to add the react-native-screens and react-native-safe-area-context dependency when using navigation dependency as well otherwise apk won't worj
+// Set a property called  "androidStatusBar": {"translucent": true } in app.json. I think you can use StatusBar dependency as well but just in case it fails, I can't be bothered to make another apk and it worked acc to one guy on stackoverflow
 
 const Drawer = createDrawerNavigator();
 
@@ -29,11 +33,15 @@ const RouteDrawer = ({ route }) => {
           "VASANT VIHAR",
           "JAWAHAR NAGAR",
           "GANDHI NAGAR",
-          "VOLTAS COMPANY",
+          "VOLTAS",
           "SUBHASH NAGAR",
           "OSWAL PARK",
+          "MAJIWADA NAKA",
           "MUKTAI NAGAR",
-          "UTHALSAR",
+           "GOKUL NAGAR", 
+         "UTHALSAR NAKA",  
+         "CIVIL HOSPITAL", 
+          "CENTRAL MAIDAN",
           "COURTNAKA",
           "TALAO PALI",
           "THANE STATION"
