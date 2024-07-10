@@ -1,0 +1,32 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "index.js",
+        "use": "@vercel/node"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/auth",
+        "dest": "/index.js"
+      },
+      {
+        "src": "/accounts",
+        "dest": "/index.js"
+      },
+      {
+        "src": "/messages",
+        "dest": "/index.js"
+      },
+      {
+        "src": "/send",
+        "dest": "/index.js"
+      },
+      {
+        "src": "/near",
+        "dest": "/index.js"
+      }
+    ]
+  }
+  
