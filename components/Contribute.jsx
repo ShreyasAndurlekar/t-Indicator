@@ -28,6 +28,8 @@ const Contribute = () => {
             const newloc = location.coords.latitude + ", " +  location.coords.longitude
             const nearestLoc = await getNearestLoc(newloc)
 
+            console.log(nearestLoc)
+
             let ok = 0
 
             for(var i = 0; i < busStops.length; i++){
@@ -36,7 +38,7 @@ const Contribute = () => {
                     ok = 1
             }
 
-            if(ok == 0 || nearestLoc){
+            if(ok == 0){
 
                 Alert.alert('Error', `Nearest place is ${nearestLoc}`, [        // I forget the tilted inverted commas
                             
@@ -45,6 +47,8 @@ const Contribute = () => {
                 ]);
             }
             else{
+
+                changeBusStop(nearestLoc)
                 
             }
 

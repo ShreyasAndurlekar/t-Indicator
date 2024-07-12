@@ -8,6 +8,8 @@ import Contribute from './components/Contribute';
 import Account from './components/Account'
 import { BusContext } from './functions/bus';
 import { useState, useEffect } from 'react';
+import { StatusBar } from 'expo-status-bar';
+
 
 // IMPORTANT REGARDING NAVIATION LIBRARY.
 
@@ -91,6 +93,7 @@ const App = () => {
 
   return (
     <NavigationContainer>
+        <StatusBar translucent backgroundColor="transparent"/>
         <Stack.Navigator>
             <Stack.Screen
                 name="Home"
