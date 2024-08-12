@@ -53,10 +53,29 @@ const styles = StyleSheet.create({
     },
 
     cm: {
+        padding: 1, 
+        paddingRight: 40,
+        paddingLeft: 5,
+        paddingBottom: 10  
+    }
+    ,
 
-        padding: 10,   
+    leftAligned: {
+        alignSelf: 'flex-start',
+      },
+      
+    rightAligned: {
+        alignSelf: 'flex-end',
+    },
+
+    time:{
+
+        padding: 5, 
+        alignSelf: 'flex-end',
+        fontSize: 10
 
     }
+      
 
 })
 

@@ -8,7 +8,7 @@ import { BusContext } from "../functions/bus";
 
 const Chat = () => {
 
-    const [entered_input, changeMsg] = useState()
+    const [entered_input, changeMsg] = useState("")
     
     const sent = require('../assets/send.png')
     const [storedUsername, setStoredUsername] = useState('guest'); // due to async nature, we need to keep this a state
@@ -57,57 +57,69 @@ const Chat = () => {
 
     // RETRIEVE MESSAGES
 
+    const sendMessage = () => {
+
+        console.log("is this getting triggered?")
+
+        if(storedUsername == "guest"){
+
+            Alert.alert('Feature Disabled', 'Log in to chat', [
+                
+                {text: 'OK', onPress: () => console.log('OK Pressed')},
+              
+            ]);
+
+        }
+        else{
+
+            if(entered_input.length > 0){
+
+                var EI = {sender: storedUsername, message: entered_input}
+                sendMessages(entered_input, storedUsername, routename)
+
+                const newMsgs = [...chats, EI]
+            
+                changeChats(newMsgs) 
+                changeMsg('')
+            }  
+
+            }
+        }
+
     return(
     
     <View style = {styles.root}>
         <ScrollView>
             <View style = {styles.cb}>
-                
-                {
-                    chats.map((chat, idx) => (
-                        <View style = {styles.overallcm} key = {idx}>
-                            <Text style = {styles.user}>~{chat.sender}</Text>
-                            <View style = {styles.cm}>
-                                <Text>{chat.message}</Text>
-                            </View>
+            {
+                chats.map((chat, idx) => {
+             
+                    const formattedTime = new Date(chat.createdAt).toLocaleTimeString([], {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    });
+
+                    return (
+                    <View
+                        style={[ styles.overallcm,
+                        chat.sender === storedUsername ? styles.leftAligned : styles.rightAligned,]}
+                        key={idx}>
+                        <Text style={styles.user}>~{chat.sender}</Text>
+                        <View style={styles.cm}>
+                            <Text>{chat.message}</Text>
                         </View>
-                    ))
-                }
+                        <Text style={styles.time}>{formattedTime}</Text>
+                    </View>
+                );
+            })}
             </View>
         </ScrollView>
         <View style = {styles.chatbar}>
             <TextInput style = {styles.ib} 
                 onChangeText = {(val) => {changeMsg(val)}}
-                value = {entered_input}/>
-            <TouchableOpacity onPress = {
-                
-                () => {
-
-                    if(storedUsername == "guest"){
-
-                        Alert.alert('Feature Disabled', 'Log in to chat', [
-                            
-                            {text: 'OK', onPress: () => console.log('OK Pressed')},
-                          
-                        ]);
-
-                    }
-                    else{
-
-                        if(entered_input.length > 0){
-
-                            EI = {sender: storedUsername, message: entered_input}
-                            sendMessages(entered_input, storedUsername, routename)
-
-                            const newMsgs = [...chats, EI]
-                        
-                            changeChats(newMsgs) 
-                            changeMsg('')
-                        }  
-
-                        }
-                    }
-                }>
+                value = {entered_input}
+                onSubmitEditing={sendMessage}/>
+            <TouchableOpacity onPress = {sendMessage}>
                 <Image source = {sent} style = {styles.ic}/>
             </TouchableOpacity>
         </View>
