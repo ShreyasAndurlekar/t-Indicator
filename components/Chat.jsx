@@ -1,10 +1,11 @@
-import { View, Image, Text, TextInput, TouchableOpacity, ScrollView, Alert} from 'react-native';
+import { View, Image, Text, TextInput, TouchableOpacity, ScrollView, Modal} from 'react-native';
 import {useState, useEffect, useContext} from 'react'
 import styles from '../stylesheets/chat'
 import BottomBar from "./Bottom";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { retrieveMessages, sendMessages } from '../functions/database';
 import { BusContext } from "../functions/bus";
+import { toast, Toasts } from '@backpackapp-io/react-native-toast';
 
 const Chat = () => {
 
@@ -21,6 +22,8 @@ const Chat = () => {
     // Therefore we need to do a useEffect before React renders the stuff
 
     useEffect(() => {
+
+       
 
         const fetchUsername = async () => {
             try {
@@ -63,11 +66,7 @@ const Chat = () => {
 
         if(storedUsername == "guest"){
 
-            Alert.alert('Feature Disabled', 'Log in to chat', [
-                
-                {text: 'OK', onPress: () => console.log('OK Pressed')},
-              
-            ]);
+            
 
         }
         else{
@@ -102,7 +101,7 @@ const Chat = () => {
                     return (
                     <View
                         style={[ styles.overallcm,
-                        chat.sender === storedUsername ? styles.leftAligned : styles.rightAligned,]}
+                        chat.sender === storedUsername ? styles.rightAligned : styles.leftAligned,]}
                         key={idx}>
                         <Text style={styles.user}>~{chat.sender}</Text>
                         <View style={styles.cm}>
