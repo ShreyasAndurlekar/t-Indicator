@@ -1,11 +1,11 @@
-import { View, Image, Text, TextInput, TouchableOpacity, ScrollView, Modal} from 'react-native';
+import { View, Image, Text, TextInput, TouchableOpacity, ScrollView} from 'react-native';
 import {useState, useEffect, useContext} from 'react'
 import styles from '../stylesheets/chat'
 import BottomBar from "./Bottom";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { retrieveMessages, sendMessages } from '../functions/database';
 import { BusContext } from "../functions/bus";
-import { toast, Toasts } from '@backpackapp-io/react-native-toast';
+import alert from './Alert'
 
 const Chat = () => {
 
@@ -23,22 +23,14 @@ const Chat = () => {
 
     useEffect(() => {
 
-       
-
         const fetchUsername = async () => {
             try {
 
                 const storedUsername = await AsyncStorage.getItem('Username');
 
-                console.log(storedUsername)
-
-                if (storedUsername) {
-
+                if (storedUsername) 
                     setStoredUsername(storedUsername);
-                }
-
-                console.log("Username = ",storedUsername)
-
+                
             } catch (error) {
                 console.error('Error fetching username:', error);
             }
@@ -46,9 +38,7 @@ const Chat = () => {
 
         const fetchData = async () => {
 
-            console.log("Hey this is the routename",routename)
             const messagesarray = await retrieveMessages(routename) // remember to use await, if you did not use await, it would execute the next code without waiting
-            console.log('Transformed messages',messagesarray)
             changeChats(messagesarray)
             
         }
@@ -62,11 +52,13 @@ const Chat = () => {
 
     const sendMessage = () => {
 
-        console.log("is this getting triggered?")
-
         if(storedUsername == "guest"){
 
-            
+            alert('Feature Disabled', 'Log in to chat', [
+
+                {text: 'OK', onPress: () => console.log('')},
+
+            ]);
 
         }
         else{

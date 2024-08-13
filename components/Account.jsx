@@ -1,8 +1,8 @@
-// App.js
 import React, { useState } from 'react';
 import { SafeAreaView,StyleSheet,View,Text,TextInput,Button,Alert,} from 'react-native';
 import { createAccount, signIn, signOut } from '../functions/database';
 import { useNavigation } from '@react-navigation/native';
+import alert from './Alert'
 
 const Account = () => {
 
@@ -14,42 +14,51 @@ const Account = () => {
     const handleSubmit = async () => {
 
         if (username === '' || password === '') {
-            Alert.alert('Error', 'Username and password are required');
+
+            alert('Error', 'Username and password are required');
             return;
         }
 
         const newAccount = { username, password };
         
         try {
+
             const createdAccount = await createAccount(newAccount);
             setUsername('');
             setPassword('');
+
         } catch (error) {
+
             console.error('Error creating account:', error);
-            Alert.alert('Error creating account', 'Similar username already exists', [
+
+            alert('Error creating account', 'Similar username already exists', [
                             
-                {text: 'OK', onPress: () => console.log('OK Pressed')},
+                {text: 'OK', onPress: () => console.log('')},
               
             ]);
         }
     };
 
     const handleSignIn = async () => {
+
         if (username === '' || password === '') {
-            Alert.alert('Error', 'Username and password are required');
+
+            alert('Error', 'Username and password are required');
             return;
         }
 
         try {
+
             const userData = await signIn({ username, password });
             navigation.navigate('Home');
             
         } catch (error) {
         
             console.error('Error signing in:', error);
-            Alert.alert('Error signing in:', 'Non-existent Password/User', [
+
+            alert('Error signing in:', 'Non-existent Password/User', [
                             
-                {text: 'OK', onPress: () => console.log('OK Pressed')},
+                {text: 'OK', onPress: () => console.log('')},
               
             ]);
         }

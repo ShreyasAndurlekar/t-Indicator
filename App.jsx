@@ -13,7 +13,7 @@ import { StatusBar } from 'expo-status-bar';
 
 // IMPORTANT REGARDING NAVIATION LIBRARY.
 
-// you need to add the react-native-screens and react-native-safe-area-context dependency when using navigation dependency as well otherwise apk won't worj
+// you need to add the react-native-screens and react-native-safe-area-context dependency when using navigation dependency as well otherwise apk won't work
 // Set a property called  "androidStatusBar": {"translucent": true } in app.json. I think you can use StatusBar dependency as well but just in case it fails, I can't be bothered to make another apk and it worked acc to one guy on stackoverflow
 
 const Drawer = createDrawerNavigator();

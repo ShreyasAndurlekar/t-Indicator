@@ -6,6 +6,7 @@ import {useState, useContext} from 'react'
 import { BusContext } from "../functions/bus";
 import * as Location from 'expo-location';
 import { getNearestLoc } from '../functions/database'
+import alert from './Alert'
 
 const Contribute = () => {
 
@@ -19,16 +20,17 @@ const Contribute = () => {
     const getLocation = async () => {
 
             let { status } = await Location.requestForegroundPermissionsAsync();
+
             if (status !== 'granted') {
+
               console.error('Permission to access location was denied');
               return;
+
             }
         
             let location = await Location.getCurrentPositionAsync({});
             const newloc = location.coords.latitude + ", " +  location.coords.longitude
             const nearestLoc = await getNearestLoc(newloc)
-
-            console.log(nearestLoc)
 
             let ok = 0
 
@@ -40,17 +42,14 @@ const Contribute = () => {
 
             if(ok == 0){
 
-                Alert.alert('Error', `Nearest place is ${nearestLoc}`, [        // I forget the tilted inverted commas
+                alert('Error', `Nearest place is ${nearestLoc}`, [        // I forget the tilted inverted commas
                             
-                    {text: 'OK', onPress: () => console.log('OK Pressed')},
+                    {text: 'OK', onPress: () => console.log('')},
                   
                 ]);
             }
-            else{
-
+            else
                 changeBusStop(nearestLoc)
-                
-            }
 
     }
 
