@@ -37,8 +37,6 @@ export const signIn = async (credentials) => {
         
         const storedUsername = await AsyncStorage.getItem('Username');
 
-        console.log('Stored username:', storedUsername);
-
         return response.data;
 
     } catch (error) {

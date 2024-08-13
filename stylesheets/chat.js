@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
         padding: 1, 
         paddingRight: 40,
         paddingLeft: 5,
-        paddingBottom: 7  
+        paddingBottom: 5  
     }
     ,
 

@@ -79,42 +79,67 @@ const Chat = () => {
 
     return(
     
-    <View style = {styles.root}>
-        <ScrollView>
-            <View style = {styles.cb}>
-            {
-                chats.map((chat, idx) => {
-             
-                    const formattedTime = new Date(chat.createdAt).toLocaleTimeString([], {
-                    hour: '2-digit',
-                    minute: '2-digit',
-                    });
-
-                    return (
-                    <View
-                        style={[ styles.overallcm,
-                        chat.sender === storedUsername ? styles.rightAligned : styles.leftAligned,]}
-                        key={idx}>
-                        <Text style={styles.user}>~{chat.sender}</Text>
-                        <View style={styles.cm}>
-                            <Text>{chat.message}</Text>
-                        </View>
-                        <Text style={styles.time}>{formattedTime}</Text>
-                    </View>
-                );
-            })}
+        <View style={styles.root}>
+        {chats.length === 0 ? (
+            <View style={styles.cb}>
+                <Text style = {{margin: 10}}>Loading...</Text>
             </View>
-        </ScrollView>
-        <View style = {styles.chatbar}>
-            <TextInput style = {styles.ib} 
-                onChangeText = {(val) => {changeMsg(val)}}
-                value = {entered_input}
-                onSubmitEditing={sendMessage}/>
-            <TouchableOpacity onPress = {sendMessage}>
-                <Image source = {sent} style = {styles.ic}/>
+        ) : (
+            <ScrollView>
+                <View style={styles.cb}>
+                    {chats.map((chat, idx) => {
+                        let formattedTime;
+    
+                        if (chat.createdAt !== undefined) {
+                            formattedTime = new Date(chat.createdAt).toLocaleTimeString([], {
+                                hour: '2-digit',
+                                minute: '2-digit',
+                            });
+                        } else {
+                            const date = new Date();
+                            let hours = date.getHours();
+                            const minutes = date.getMinutes();
+                            const ampm = hours >= 12 ? 'PM' : 'AM';
+    
+                            // Convert to 12-hour format
+                            hours = hours % 12;
+                            hours = hours ? hours : 12; // the hour '0' should be '12'
+    
+                            // Pad minutes with leading zero if needed
+                            const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
+                            formattedTime = `${hours}:${formattedMinutes} ${ampm}`;
+                        }
+    
+                        return (
+                            <View
+                                style={[
+                                    styles.overallcm,
+                                    chat.sender === storedUsername ? styles.rightAligned : styles.leftAligned,
+                                ]}
+                                key={idx}>
+                                <Text style={styles.user}>~{chat.sender}</Text>
+                                <View style={styles.cm}>
+                                    <Text>{chat.message}</Text>
+                                </View>
+                                <Text style={styles.time}>{formattedTime}</Text>
+                            </View>
+                        );
+                    })}
+                </View>
+            </ScrollView>
+        )}
+        <View style={styles.chatbar}>
+            <TextInput
+                style={styles.ib}
+                onChangeText={(val) => changeMsg(val)}
+                value={entered_input}
+                onSubmitEditing={sendMessage}
+            />
+            <TouchableOpacity onPress={sendMessage}>
+                <Image source={sent} style={styles.ic} />
             </TouchableOpacity>
         </View>
-        <BottomBar/>
+        <BottomBar />
     </View>
     )
 }

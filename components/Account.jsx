@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
-import { SafeAreaView,StyleSheet,View,Text,TextInput,Button,Alert,} from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { SafeAreaView,StyleSheet,View,Text,TextInput,Button,Image} from 'react-native';
 import { createAccount, signIn, signOut } from '../functions/database';
 import { useNavigation } from '@react-navigation/native';
 import alert from './Alert'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Account = () => {
 
@@ -10,6 +11,20 @@ const Account = () => {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [storedUsername, setStoredUsername] = useState(null);
+
+    useEffect(() => {
+        
+        async function userStatus() {
+        
+            const extractuser = await AsyncStorage.getItem('Username');
+            setStoredUsername(extractuser)
+
+        }
+
+    userStatus()
+
+    },[])
 
     const handleSubmit = async () => {
 
@@ -70,37 +85,50 @@ const Account = () => {
         navigation.navigate("Home")
     }
 
-    return (
+    return storedUsername == null ? (
         <SafeAreaView style={styles.container}>
-                <View style={styles.sectionContainer}>
-                    <Text style={styles.sectionTitle}>Become a member</Text>
-                    <TextInput
-                        style={styles.input}
-                        placeholder="Username"
-                        value={username}
-                        onChangeText={setUsername}
-                    />
-                    <TextInput
-                        style={styles.input}
-                        placeholder="Password"
-                        secureTextEntry
-                        value={password}
-                        onChangeText={setPassword}
-                    />
-                    <View style = {styles.b}>
-                        <Button title="Sign Up" onPress={handleSubmit}/>
-                    </View>
-                    <View style = {styles.b}>
-                        <Button title="Sign In" onPress={handleSignIn}/>
-                    </View>
-                    <View style = {styles.b}>
-                        <Button title="Logout" onPress={handleLogout}/>
-                    </View>
-                    
-                    
+            <View style={styles.sectionContainer}>
+                <Text style={[styles.sectionTitle, { fontSize: 24 }]}>Welcome to TMT!</Text>
+                <Image
+                    style={{ width: 125, height: 125 }}
+                    source={require('../assets/adaptive-icon.png')}
+                />
+                <Text style={[styles.sectionTitle, { fontSize: 18, marginBottom: 20 }]}>Become a member</Text>
+                <TextInput
+                    style={styles.input}
+                    placeholder="Username"
+                    value={username}
+                    onChangeText={setUsername}
+                />
+                <TextInput
+                    style={styles.input}
+                    placeholder="Password"
+                    secureTextEntry
+                    value={password}
+                    onChangeText={setPassword}
+                />
+                <View style={[styles.b, { marginTop: 10 }]}>
+                    <Button title="Sign Up" onPress={handleSubmit} />
                 </View>
+                <Text style={[styles.sectionTitle, { fontSize: 14, marginTop: 30, marginBottom: 20 }]}>
+                    Already a member?
+                </Text>
+                <View style={styles.b}>
+                    <Button title="Sign In" onPress={handleSignIn} />
+                </View>
+            </View>
+        </SafeAreaView>
+    ) : (
+        <SafeAreaView style={styles.container}>
+            <View style={styles.sectionContainer}>
+                <View style={styles.b}>
+                    <Text style={[styles.sectionTitle, { fontSize: 20, marginBottom: 40 }]}>Thank You for using TMT App</Text>
+                    <Button title="Log Out" color = "#FF0000" onPress={handleLogout} />
+                </View>
+            </View>
         </SafeAreaView>
     );
+    
 };
 
 const styles = StyleSheet.create({
@@ -111,17 +139,15 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     sectionContainer: {
-        marginTop: 32,
+        marginTop: 10,
         paddingHorizontal: 24,
         width: 600,
         alignItems: 'center'
     },
     sectionTitle: {
-        fontSize: 24,
         fontWeight: '600',
         color: '#333',
         textAlign: 'center',
-        marginBottom: 40,
     },
     input: {
         height: 40,
