@@ -9,7 +9,7 @@ const GETLOC_URL =  "https://userdetails-five.vercel.app/near"
 
 export const getNearestLoc = async (location) => {
 
-    console.log(location)
+    //console.log(location)
 
     try{
 
@@ -17,6 +17,7 @@ export const getNearestLoc = async (location) => {
             params: { location }
         })
 
+        console.log("Where's nearest ? ",response.data.nearest)
         return response.data.nearest;
     }
     catch (error) {

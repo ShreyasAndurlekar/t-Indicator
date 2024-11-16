@@ -241,6 +241,14 @@ const App = () => {
             <Stack.Screen
                 name="Account"
                 component={Account}
+                options={{
+
+                  headerStyle: {
+                      backgroundColor: 'red', 
+                    },
+  
+                  headerBackImageSource: require('./assets/back-icon.png')
+                    }}
             />
         </Stack.Navigator>
     </NavigationContainer>

@@ -190,6 +190,8 @@ const Home = () => {
     /*<View style = {{flex: 1, alignItems: 'center'}}>
     <View style={{ flex: 1 , width: 500, borderWidth: 3}}>*/
 
+    const searchicon = require('../assets/search.png')
+
     return (
         <View style = {{flex: 1}}>
             <Navbar />
@@ -201,7 +203,7 @@ const Home = () => {
                         onChangeText={setSearchText}
                     />
                     <Image
-                        source={{ uri: '../assets/search.png' }} 
+                        source={searchicon} 
                         style={{ width: 20, height: 20, tintColor: 'gray' }}
                     />
                 </View>
