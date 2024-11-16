@@ -121,6 +121,27 @@ function findNearestPlace(origin, places) {
   return nearestPlace;
 }
 
+async function distanceAndTimeFromStation(origin){
+
+  const destination = 'Thane West, Thane, Maharashtra'
+  const mode = 'transit'
+
+  //console.log(API_KEY)
+
+  const url = `https://maps.googleapis.com/maps/api/distancematrix/json?origins=${origin}&destinations=${destination}&mode=${mode}&key=${API_KEY}`;
+
+  const response = await axios.get(url);
+
+  if (response.data.status === "OK") {
+
+    const travelTime = response.data.rows[0].elements[0].duration.text;
+    console.log(travelTime);
+
+  } else {
+    console.log('Error in API response:', response.data.error_message);
+  }
+}
+
 
 router.get('/', async (req, res) => {
 
@@ -129,7 +150,8 @@ router.get('/', async (req, res) => {
   try {
       
       const result = await getNearbyPlaces(location)
-      res.status(201).json({nearest: result});
+      const timeanddist = await distanceAndTimeFromStation(location)
+      res.status(201).json({nearest: result, timeAndDistance: timeanddist});
   }
   catch(error){
 

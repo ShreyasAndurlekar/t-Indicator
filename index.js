@@ -10,7 +10,7 @@ const port = 5000;
 
 const limiter = rateLimit({
     windowMs: 5 * 60 * 60 * 1000,  
-    max: 10, 
+    max: 20, 
     message: {
       status: 429,
       error: 'Too many requests',
