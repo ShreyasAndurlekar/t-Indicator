@@ -135,7 +135,7 @@ async function distanceAndTimeFromStation(origin){
   if (response.data.status === "OK") {
 
     const travelTime = response.data.rows[0].elements[0].duration.text;
-    console.log(travelTime);
+    return travelTime
 
   } else {
     console.log('Error in API response:', response.data.error_message);
