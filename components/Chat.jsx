@@ -39,7 +39,7 @@ const Chat = () => {
         const fetchData = async () => {
 
             const messagesarray = await retrieveMessages(routename) // remember to use await, if you did not use await, it would execute the next code without waiting
-            console.log(messagesarray)
+            //console.log(messagesarray)
             changeChats(messagesarray)
             
         }

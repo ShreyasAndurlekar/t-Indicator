@@ -202,7 +202,7 @@ const App = () => {
     
     const activateServer = async () => {
       try {
-        const response = await axios.get('http://localhost:5000')
+        const response = await axios.get('https://userdetails-five.vercel.app')
       } catch (error) {
         console.error('Error activating server:', error.message);
       }
