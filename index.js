@@ -33,7 +33,9 @@ const authRouter = require('./routes/auth');
 const sendRouter = require('./routes/send');
 const messagesRouter = require('./routes/messages');
 const nearRouter = require('./routes/near')
+const displayRouter = require('./routes/display')
 
+app.use('/', displayRouter);
 app.use('/accounts', accountsRouter);
 app.use('/auth', authRouter);
 app.use('/messages', messagesRouter);

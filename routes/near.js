@@ -77,7 +77,6 @@ async function getNearbyPlaces(location) {
         const copy = places
 
         places = filterPlaces(places, pn);
-        console.log(places)
 
         let nearestPlace
 
