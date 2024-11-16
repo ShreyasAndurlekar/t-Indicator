@@ -18,7 +18,6 @@ const navbar_styles = StyleSheet.create({
 
     navtext: {
 
-        textAlign: 'center',
         fontSize: 20,
         marginLeft: 20,
        

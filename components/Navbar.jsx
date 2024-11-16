@@ -12,7 +12,7 @@ const Navbar = () => {
             <View style={navbar_styles.navbar}>
                 <View style={navbar_styles.textContainer}>
                     <Text style={navbar_styles.navtext}>
-                        TMT App
+                        Thane Municipal Transport
                     </Text>
                 </View>
                 <TouchableOpacity onPress = {() => {navigation.navigate("Account")}}>

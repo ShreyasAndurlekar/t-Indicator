@@ -10,7 +10,7 @@ const Route = () => {
     const {busStops} = useContext(BusContext)   // busStops is where the array is
     const {busStop} = useContext(BusContext)    // Assuming this is the part where the red highlight thing is
     const {color} = useContext(BusContext)
-
+    
 
     // {} is used to destructure the object
     
