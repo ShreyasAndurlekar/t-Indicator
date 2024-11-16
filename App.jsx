@@ -185,19 +185,6 @@ const RouteDrawer = ({ route }) => {
       changeBusStops(tmtBusStops[busRoute]);
   }, [busRoute]);
 
-  const activateServer = async () => {
-    try {
-      const response = await axios.get('https://userdetails-five.vercel.app');
-      console.log('Server activated:', response.status);
-    } catch (error) {
-      console.error('Error activating server:', error.message);
-    }
-  };
-
-  // Vercel spins down with inactivity
-  
-  activateServer();
-
   return (
       <BusContext.Provider value={{ busStop, busStops, changeBusStop, setColor, color }}>
           <Drawer.Navigator>
@@ -210,6 +197,21 @@ const RouteDrawer = ({ route }) => {
 };
 
 const App = () => {
+
+  useEffect(() => {
+    
+    const activateServer = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000')
+      } catch (error) {
+        console.error('Error activating server:', error.message);
+      }
+    };
+  
+    // Vercel spins down with inactivity
+    activateServer()
+
+}, [0]);
 
   const Stack = createNativeStackNavigator();
 
