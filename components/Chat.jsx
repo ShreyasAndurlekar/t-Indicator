@@ -10,6 +10,7 @@ import alert from './Alert'
 const Chat = () => {
 
     const [entered_input, changeMsg] = useState("")
+    const [msgstatus, changeMsgStatus] = useState("Loading..")
     
     const sent = require('../assets/send.png')
     const [storedUsername, setStoredUsername] = useState('guest'); // due to async nature, we need to keep this a state
@@ -39,8 +40,11 @@ const Chat = () => {
         const fetchData = async () => {
 
             const messagesarray = await retrieveMessages(routename) // remember to use await, if you did not use await, it would execute the next code without waiting
-            //console.log(messagesarray)
-            changeChats(messagesarray)
+            
+            if(messagesarray == undefined)
+                changeMsgStatus("No one has sent a message yet..")
+            else
+                changeChats(messagesarray)
             
         }
 
@@ -83,7 +87,7 @@ const Chat = () => {
         <View style={styles.root}>
         {chats.length === 0 ? (
             <View style={styles.cb}>
-                <Text style = {{margin: 10}}>Loading...</Text>
+                <Text style = {{margin: 10}}>{msgstatus}</Text>
             </View>
         ) : (
             <ScrollView>

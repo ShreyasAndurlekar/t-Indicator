@@ -73,6 +73,9 @@ export const retrieveMessages = async (routename) => {
             params: { routename }
         })
 
+        if(response.data.length == 0)
+            return undefined
+
         const messages = response.data[0].messages.map(message => ({
             message: message.message,
             sender: message.sender,
