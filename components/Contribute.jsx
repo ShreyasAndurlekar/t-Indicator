@@ -46,7 +46,8 @@ const Contribute = () => {
 
             if(ok == 0){
 
-                alert('TMT is restricted to Thane only!', `Nearest bus stop is ${nearestLoc}`, [        // I forget the tilted inverted commas
+                alert('TMT is restricted to Thane only!', `Nearest bus stop is ${nearestLoc}`, [
+                  // I forget the tilted inverted commas
                             
                     {text: 'OK', onPress: () => console.log('')},
                   
@@ -84,7 +85,7 @@ const Contribute = () => {
                             
                             setSelectedStop(itemValue)
                             changeBusStop(itemValue)
-                            setETA(23)                          
+                            setETA(23) // need to test if backend can handle simple text like Vasant Vihar and get ETA                          
                         }}
                         style = {styles.picker}>
                 

@@ -15,17 +15,36 @@ const Route = () => {
     
 
     // {} is used to destructure the object
+  
+  const [busstopcount, setBusstopcount] = useState(0);
+  const [arrayOfTimeStamps, setArrayOfTimeStamps] = useState([]);
     
-    useEffect(() => {
+useEffect(() => {
 
-      console.log(eta)
-           
-    })  // React cannot update a component while rendering another component "Contribute",
+if (eta) {
+    
+    let tempBusstopcount = 0;
+    
+    busStops.map((stop, idx) => {
+      
+      if (stop === busStop) {
+        tempBusstopcount = idx;
+        console.log("Temp Busstopcount:", tempBusstopcount);
+      }
+    });
+
+    setBusstopcount(tempBusstopcount);
+    const timestamps = calculateTimestamps(eta, busStops.length - tempBusstopcount);
+    setArrayOfTimeStamps(timestamps);
+    
+    console.log("Immediate timestamps:", timestamps);
+  }
+}, [busStop]);
+   // React cannot update a component while rendering another component "Contribute",
         // Seems to re-render this component everytime I switch to Chat.jsx // Contribute.jsx
-        // Need more explaination 
+        // Need more explaination
 
-    // if(eta) <-- use this to trigger timespliiteralgo
-
+   
     return(
         <View style = {styles.root}>
             <ScrollView style = {styles.sv}>
@@ -43,9 +62,13 @@ const Route = () => {
                     <View style = {styles.busstop}>   
                         <Text style = {styles.bstext}>
                             {stop}
-                        </Text>
+                        </Text>{console.log("BUSCOINT = ",busstopcount)}
+                        <Text>{ 
+                        
 
-                        <Text>{eta}</Text> 
+                        idx >= busstopcount + 1 ? arrayOfTimeStamps[idx - busstopcount - 1] : ''
+                          
+                        }</Text> 
                     </View>
 
                 </View>

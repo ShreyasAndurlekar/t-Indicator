@@ -4,7 +4,7 @@ function calculateTimestamps(durationInMinutes, remainingStops) {
   const interval = durationInMinutes / remainingStops;
 
   const timestamps = [];
-  for (let i = 0; i <= remainingStops; i++) {
+  for (let i = 1; i <= remainingStops; i++) {
     const time = new Date(currentTime.getTime() + i * interval * 60000);
     timestamps.push(time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
   }
@@ -15,6 +15,5 @@ function calculateTimestamps(durationInMinutes, remainingStops) {
 // Example usage
 const duration = 23; // total duration in minutes
 const stops = 5; // number of stops
-console.log(calculateTimestamps(duration, stops));
 
 export default calculateTimestamps
