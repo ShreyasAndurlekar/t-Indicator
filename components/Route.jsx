@@ -7,18 +7,30 @@ import Bus from "./Bus";
 
 const Route = () => {
 
-    const {busStops} = useContext(BusContext)   // busStops is where the array is
-    const {busStop} = useContext(BusContext)    // Assuming this is the part where the red highlight thing is
-    const {color} = useContext(BusContext)
+    const {busStops} = useContext(BusContext)   // busStops retrieves the respective array of bus stops 
+    const {busStop} = useContext(BusContext)    // Contains the current location of the bus if retrieved
+    const {color} = useContext(BusContext)      // Contains the color of the bus
+    const {eta} = useContext(BusContext)        // Contains the eta
     
 
     // {} is used to destructure the object
     
-    useEffect(() => { 
+    useEffect(() => {
+
+      console.log(eta)
            
     })  // React cannot update a component while rendering another component "Contribute",
-        // Therefore only update whenRoute is on screen.
+        // Seems to re-render this component everytime I switch to Chat.jsx // Contribute.jsx
+        // Need more explaination 
       
+      
+    const createTimings(eta) => {
+
+        // get current time
+        // add time to eta
+      // get no of bus stops remaining divide eta of tie bus stop / no of bus stops
+      // return array
+    }
 
     return(
         <View style = {styles.root}>
@@ -34,10 +46,12 @@ const Route = () => {
 
                     </View>
 
-                    <View style = {styles.busstop}>
+                    <View style = {styles.busstop}>   
                         <Text style = {styles.bstext}>
                             {stop}
                         </Text>
+
+                        <Text>{eta}</Text> // Need to work on this eta variable
                     </View>
 
                 </View>
@@ -48,7 +62,7 @@ const Route = () => {
        
         <BottomBar />
         </View>
-    )
+          )
 }
 
 export default Route

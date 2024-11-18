@@ -17,8 +17,8 @@ export const getNearestLoc = async (location) => {
             params: { location }
         })
 
-        console.log("Where's nearest ? ",response.data.nearest)
-        return response.data.nearest;
+        console.log(response.data)
+        return response.data;
     }
     catch (error) {
         console.error('Error retrieving messages:', error);

@@ -21,12 +21,16 @@ const Drawer = createDrawerNavigator();
 
 const RouteDrawer = ({ route }) => {
 
-  const { busRoute } = route.params; // Accessing busRoute from route params
+  const { busRoute } = route.params; // Accessing selected bus route from Home Screen
+
+  // These are all the variables that need to be passed b/w Route.jsx and Contribute.jsx
 
   const [busStop, changeBusStop] = useState("Pawar Nagar"); // glowy thing
   const [busStops, changeBusStops] = useState([]);
   const [color, setColor] = useState("red")
+  const [eta, setETA] = useState()   
 
+  // Need to convert busStop, color and eta into an object 
   const tmtBusStops = [
       [
           "PAWAR NAGAR",
@@ -186,7 +190,7 @@ const RouteDrawer = ({ route }) => {
   }, [busRoute]);
 
   return (
-      <BusContext.Provider value={{ busStop, busStops, changeBusStop, setColor, color }}>
+      <BusContext.Provider value={{ busStop, busStops, changeBusStop, setColor, color, eta, setETA }}>
           <Drawer.Navigator>
               <Drawer.Screen name="RoutesList" component={Route} options={() => ({ headerShown: false })} />
               <Drawer.Screen name="Chat" component={Chat} options={() => ({ headerShown: false })} />

@@ -13,6 +13,7 @@ const Contribute = () => {
     const {changeBusStop} = useContext(BusContext)
     const {busStops} = useContext(BusContext)
     const {setColor} = useContext(BusContext)
+    const {setETA} = useContext(BusContext)
 
     const [selectedBus, setSelectedBus] = useState("red")
     const [selectedStop, setSelectedStop] = useState("Pawar Nagar")
@@ -30,8 +31,11 @@ const Contribute = () => {
         
             let location = await Location.getCurrentPositionAsync({});
             const newloc = location.coords.latitude + ", " +  location.coords.longitude
-            const nearestLoc = await getNearestLoc(newloc)
+            const nearestLocBody = await getNearestLoc(newloc)
 
+            setETA(nearestLocBody.timeAndDistance)
+            
+            const nearestLoc = nearestLocBody.nearest
             let ok = 0
 
             for(var i = 0; i < busStops.length; i++){
@@ -42,7 +46,7 @@ const Contribute = () => {
 
             if(ok == 0){
 
-                alert('Error', `Nearest place is ${nearestLoc}`, [        // I forget the tilted inverted commas
+                alert('TMT is restricted to Thane only!', `Nearest bus stop is ${nearestLoc}`, [        // I forget the tilted inverted commas
                             
                     {text: 'OK', onPress: () => console.log('')},
                   
@@ -64,7 +68,6 @@ const Contribute = () => {
                             
                             setSelectedBus(itemValue)
                             setColor(itemValue)
-                        
                         }}
                         style = {styles.picker}
                 >
@@ -81,7 +84,7 @@ const Contribute = () => {
                             
                             setSelectedStop(itemValue)
                             changeBusStop(itemValue)
-                           
+                            setETA(23)                          
                         }}
                         style = {styles.picker}>
                 
