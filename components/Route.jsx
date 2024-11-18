@@ -4,6 +4,7 @@ import BottomBar from "./Bottom";
 import {useState, useContext, useEffect} from 'react'
 import { BusContext } from "../functions/bus";
 import Bus from "./Bus";
+import calculateTimestamps from "../functions/timesplitter.js"    
 
 const Route = () => {
 
@@ -22,15 +23,8 @@ const Route = () => {
     })  // React cannot update a component while rendering another component "Contribute",
         // Seems to re-render this component everytime I switch to Chat.jsx // Contribute.jsx
         // Need more explaination 
-      
-      
-    const createTimings(eta) => {
 
-        // get current time
-        // add time to eta
-      // get no of bus stops remaining divide eta of tie bus stop / no of bus stops
-      // return array
-    }
+    // if(eta) <-- use this to trigger timespliiteralgo
 
     return(
         <View style = {styles.root}>
@@ -51,7 +45,7 @@ const Route = () => {
                             {stop}
                         </Text>
 
-                        <Text>{eta}</Text> // Need to work on this eta variable
+                        <Text>{eta}</Text> 
                     </View>
 
                 </View>
