@@ -23,7 +23,8 @@
 3. **Install dependencies and run development server**
 
     ```bash
-    npm i expo@latest 
+    npm i expo@latest
+    npx expo install --fix
     npm install
     npm start
     ```
