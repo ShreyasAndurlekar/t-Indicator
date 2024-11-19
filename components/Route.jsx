@@ -1,10 +1,11 @@
-import { Text, View, ScrollView } from "react-native";
+import { Text, View, ScrollView, Pressable } from "react-native";
 import styles from '../stylesheets/global'
 import BottomBar from "./Bottom";
 import {useState, useContext, useEffect} from 'react'
 import { BusContext } from "../functions/bus";
 import Bus from "./Bus";
 import calculateTimestamps from "../functions/timesplitter.js"    
+import { getTime } from "../functions/database"
 
 const Route = () => {
 
@@ -12,8 +13,8 @@ const Route = () => {
     const {busStop} = useContext(BusContext)    // Contains the current location of the bus if retrieved
     const {color} = useContext(BusContext)      // Contains the color of the bus
     const {eta} = useContext(BusContext)        // Contains the eta
-    
-
+    const {setETA} = useContext(BusContext)
+    const {changeBusStop} = useContext(BusContext)
     // {} is used to destructure the object
   
   const [busstopcount, setBusstopcount] = useState(0);
@@ -59,7 +60,14 @@ if (eta) {
 
                     </View>
 
-                    <View style = {styles.busstop}>   
+                    <Pressable  onPress={async () => {
+                            
+                            changeBusStop(stop)
+                            const eta_ = await getTime(stop)
+                            setETA(eta_)
+
+                       }} style = {styles.busstop}>
+
                         <Text style = {styles.bstext}>
                             {stop}
                         </Text>
@@ -69,7 +77,7 @@ if (eta) {
                         idx >= busstopcount + 1 ? arrayOfTimeStamps[idx - busstopcount - 1] : ''
                           
                         }</Text> 
-                    </View>
+                    </Pressable>
 
                 </View>
             ))
