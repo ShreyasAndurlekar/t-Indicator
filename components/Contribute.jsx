@@ -5,7 +5,7 @@ import { Picker } from '@react-native-picker/picker';
 import {useState, useContext} from 'react'
 import { BusContext } from "../functions/bus";
 import * as Location from 'expo-location';
-import { getNearestLoc } from '../functions/database'
+import { getNearestLoc, getTime } from '../functions/database'
 import alert from './Alert'
 
 const Contribute = () => {
@@ -81,12 +81,13 @@ const Contribute = () => {
                 <Text style = {styles.big}>Recently Passed Stop</Text>
 
                 <Picker selectedValue={selectedStop} 
-                        onValueChange={(itemValue) => {
+                        onValueChange={async (itemValue) => {
                             
                             setSelectedStop(itemValue)
                             changeBusStop(itemValue)
-                            setETA(23) // need to test if backend can handle simple text like Vasant Vihar and get ETA                          
-                        }}
+                            const eta_ = await getTime(itemValue)
+                            setETA(eta_)
+                       }}
                         style = {styles.picker}>
                 
                 {

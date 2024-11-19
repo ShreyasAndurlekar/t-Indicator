@@ -207,14 +207,14 @@ const App = () => {
     const activateServer = async () => {
       try {
         const response = await axios.get('https://userdetails-five.vercel.app')
-        console.log(response)
+//        console.log(response)
       } catch (error) {
         console.error('Error activating server:', error.message);
       }
     };
   
     // Vercel spins down with inactivity
-    activateServer()
+    activateServer()    
 
 }, [0]);
 

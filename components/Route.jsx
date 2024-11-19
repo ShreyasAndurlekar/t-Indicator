@@ -29,17 +29,17 @@ if (eta) {
       
       if (stop === busStop) {
         tempBusstopcount = idx;
-        console.log("Temp Busstopcount:", tempBusstopcount);
+//        console.log("Temp Busstopcount:", tempBusstopcount);
       }
     });
 
     setBusstopcount(tempBusstopcount);
-    const timestamps = calculateTimestamps(eta, busStops.length - tempBusstopcount);
+    const timestamps = calculateTimestamps(eta, busStops.length - tempBusstopcount - 1);
     setArrayOfTimeStamps(timestamps);
     
     console.log("Immediate timestamps:", timestamps);
   }
-}, [busStop]);
+}, [eta]);
    // React cannot update a component while rendering another component "Contribute",
         // Seems to re-render this component everytime I switch to Chat.jsx // Contribute.jsx
         // Need more explaination
@@ -62,7 +62,7 @@ if (eta) {
                     <View style = {styles.busstop}>   
                         <Text style = {styles.bstext}>
                             {stop}
-                        </Text>{console.log("BUSCOINT = ",busstopcount)}
+                        </Text>
                         <Text>{ 
                         
 

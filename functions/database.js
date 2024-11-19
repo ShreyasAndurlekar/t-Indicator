@@ -3,17 +3,28 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import Constants from 'expo-constants';
 
 const apiUrl = Constants.manifest.extra.apiUrl;
-console.log('API URL:', apiUrl);
 
-const API_URL = "https://userdetails-five.vercel.app/accounts"
-const SIGNIN_API_URL = 	"https://userdetails-five.vercel.app/auth"
-const RETRIEVEMESSAGES_URL = "https://userdetails-five.vercel.app/messages"
-const SENDMESSAGE_URL = "https://userdetails-five.vercel.app/send"
-const GETLOC_URL =  "https://userdetails-five.vercel.app/near"
 
+const activateServer = async () => {
+      try {
+        const response = await axios.get(`${apiUrl}`)
+      } catch (error) {
+        console.error('Error activating server:', error.message);
+      }
+    };
+  
+activateServer()   
+
+
+const API_URL = `${apiUrl}accounts`;
+const SIGNIN_API_URL = `${apiUrl}auth`;
+const RETRIEVEMESSAGES_URL = `${apiUrl}messages`;
+const SENDMESSAGE_URL = `${apiUrl}send`;
+const GETLOC_URL = `${apiUrl}near`;
+const GETTIME_URL = "http://localhost:5000/near/time"
+
+ 
 export const getNearestLoc = async (location) => {
-
-    //console.log(location)
 
     try{
 
@@ -112,3 +123,19 @@ export const sendMessages = async (message, username, routename) => {
     }
 }
 
+export const getTime = async ( location ) => {
+
+  try{
+        const response = await axios.get(GETTIME_URL, {
+            params: { location }
+        })
+
+        console.log("API Response",response.data)
+        return response.data.timeAndDistance;
+    }
+    catch (error) {
+        console.error('Error retrieving messages:', error);
+        throw error;
+    }
+ 
+}
