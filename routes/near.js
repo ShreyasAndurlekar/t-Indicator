@@ -113,7 +113,10 @@ async function distanceAndTimeFromStation(origin){
 
   if (response.data.status === "OK") {
 
-    const travelTime = response.data.rows[0].elements[0].duration.text;
+    const travelTime_ = response.data.rows[0].elements[0].duration.text;
+    const travelTime = travelTime_.replace(/\D/g, ''); // Replace any non-digit character with an empty string
+    
+
     return travelTime
 
   } else {
@@ -146,7 +149,7 @@ router.get('/time',async(req,res) => {
 
   try{
 
-    location_ = location + ', Thane'
+    const location_ = location + ', Thane'
     const timeanddist = await distanceAndTimeFromStation(location_)
     res.status(201).json({timeAndDistance: timeanddist})
 
