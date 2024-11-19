@@ -46,29 +46,10 @@ async function getNearbyPlaces(location) {
         'Court Naka',
         'Thane Railway Station' ]
 
-      const an = [
-        "ANAND NAGAR",
-        "VIJAY NAGARI",
-        "WAGHBIL",
-        "DONGRI PADA",
-        "PATLI PADA",
-        "AZAD NAGAR",
-        "MULLA BAGH",
-        "MANPADA",
-        "LOCKIM COMPANY",
-        "HIDE PARK",
-        "KAPURBAWDI",
-        "ASHAPURA MANDIR",
-        "MAJIWADA",
-        "MUKTAI NAGAR",
-        "GOKUL NAGAR",
-        "CENTRAL MAIDAN",
-        "COURT NAKA",
-        "CIVIL COURT",
-        "TALAV PALI",
-        "THANE RAILWAY STATION" ]
-
-      // REMOVE UNWANTED DATA since type: 'transit station'
+      
+      /* Since I can experiment only on this path and it is a hobby project, I only need this filterArray
+       * Since the frontend requires the same text as it's display we use this to match the API result
+       * and return a proper defined nearest Bus Stop instead of Civil Hospital, 6788, West Road */
 
       try {
 
@@ -88,7 +69,6 @@ async function getNearbyPlaces(location) {
         }
         
         const ans = nearestPlace.name.toUpperCase()
-        console.log('Nearest Place:', ans);
         return ans
 
       } catch (error) {
@@ -123,10 +103,9 @@ function findNearestPlace(origin, places) {
 
 async function distanceAndTimeFromStation(origin){
 
-  const destination = 'Thane West, Thane, Maharashtra'
+  const destination = 'Thane Railway Station, 01 Thane Railway Station Railway Station, Thane, Maharashtra 400601'
   const mode = 'transit'
 
-  //console.log(API_KEY)
 
   const url = `https://maps.googleapis.com/maps/api/distancematrix/json?origins=${origin}&destinations=${destination}&mode=${mode}&key=${API_KEY}`;
 
@@ -161,5 +140,22 @@ router.get('/', async (req, res) => {
 
 })
 
-module.exports = router
+router.get('/time',async(req,res) => {
 
+  const { location } = req.query
+
+  try{
+
+    location_ = location + ', Thane'
+    const timeanddist = await distanceAndTimeFromStation(location_)
+    res.status(201).json({timeAndDistance: timeanddist})
+
+  } catch(error){
+
+      console.error(error)
+      res.status(400).json({ message: error.message });
+  }
+
+})
+
+module.exports = router
