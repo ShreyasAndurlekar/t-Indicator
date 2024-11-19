@@ -1,5 +1,9 @@
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Constants from 'expo-constants';
+
+const apiUrl = Constants.manifest.extra.apiUrl;
+console.log('API URL:', apiUrl);
 
 const API_URL = "https://userdetails-five.vercel.app/accounts"
 const SIGNIN_API_URL = 	"https://userdetails-five.vercel.app/auth"
@@ -27,7 +31,7 @@ export const getNearestLoc = async (location) => {
 }
 
 export const signIn = async (credentials) => {
-    try {
+    try { 
 
         const response = await axios.post(SIGNIN_API_URL, credentials);
         const token  = response.data.token
