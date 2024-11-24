@@ -26,6 +26,10 @@
       {
         "src": "/near",
         "dest": "/index.js"
+      },
+      {
+        "src": "/time",
+        "dest": "/index.js"
       }
     ]
   }
