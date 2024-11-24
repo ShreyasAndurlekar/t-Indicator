@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform } from 'react-native';
 
 const styles = StyleSheet.create({
 
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
 
     busstop: {
 
-        marginTop: 30,
+        marginTop: Platform.OS === 'web' ? 30 : 10,
         marginLeft: 30,
         
     },
@@ -80,10 +80,8 @@ const styles = StyleSheet.create({
 
     buspath: {
 
-        height: '30',
         width: 10,
         backgroundColor: 'black',
-        marginBottom: -30,
         marginLeft: 15,
         justifyContent: 'center',
         alignItems: 'center'

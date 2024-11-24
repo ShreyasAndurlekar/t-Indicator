@@ -7,7 +7,6 @@ const BottomBar = () => {
 
     const chat = require('../assets/chat.png')
     const route = require('../assets/route.png')
-    const contribute = require('../assets/contribute.png')
 
     const navigation = useNavigation();
 
@@ -19,9 +18,6 @@ const BottomBar = () => {
         </TouchableOpacity>
         <TouchableOpacity onPress = {() => {navigation.navigate('Chat')}}>
             <Image source = {chat}  style = {styles.icons}/>
-        </TouchableOpacity>
-        <TouchableOpacity onPress = {() => {navigation.navigate('Contribute')}}>
-            <Image source = {contribute}  style = {styles.icons}/>
         </TouchableOpacity>
     </View>)
 }

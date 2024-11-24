@@ -2,7 +2,7 @@ import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Constants from 'expo-constants';
 
-const apiUrl = Constants.manifest.extra.apiUrl;
+const apiUrl = Constants.expoConfig.extra.apiUrl;
 
 
 const activateServer = async () => {
@@ -21,9 +21,10 @@ const SIGNIN_API_URL = `${apiUrl}auth`;
 const RETRIEVEMESSAGES_URL = `${apiUrl}messages`;
 const SENDMESSAGE_URL = `${apiUrl}send`;
 const GETLOC_URL = `${apiUrl}near`;
-const GETTIME_URL = "http://localhost:5000/near/time"
+const GETTIME_URL = `${apiUrl}time`;
 
- 
+console.log(apiUrl)
+
 export const getNearestLoc = async (location) => {
 
     try{
@@ -126,11 +127,12 @@ export const sendMessages = async (message, username, routename) => {
 export const getTime = async ( location ) => {
 
   try{
+       console.log(GETTIME_URL)
         const response = await axios.get(GETTIME_URL, {
             params: { location }
         })
 
-        console.log("API Response",response.data)
+        //console.log("API Response",response.data)
         return response.data.timeAndDistance;
     }
     catch (error) {
@@ -139,3 +141,5 @@ export const getTime = async ( location ) => {
     }
  
 }
+
+

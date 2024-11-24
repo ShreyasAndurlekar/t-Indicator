@@ -4,12 +4,12 @@ import { NavigationContainer } from '@react-navigation/native';
 import Route from './components/Route'; 
 import Home from './components/Home';
 import Chat from './components/Chat';
-import Contribute from './components/Contribute';
 import Account from './components/Account'
 import { BusContext } from './functions/bus';
 import { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import axios from 'axios';
+import { tmtBusStops } from './functions/extra';
 
 
 // IMPORTANT REGARDING NAVIATION LIBRARY.
@@ -31,160 +31,7 @@ const RouteDrawer = ({ route }) => {
   const [eta, setETA] = useState()   
 
   // Need to convert busStop, color and eta into an object 
-  const tmtBusStops = [
-      [
-          "PAWAR NAGAR",
-          "MUNICIPAL SCHOOL",
-          "EDENWOOD",
-          "LOKPURAM",
-          "VASANT VIHAR",
-          "JAWAHAR NAGAR",
-          "GANDHI NAGAR",
-          "VOLTAS",
-          "SUBHASH NAGAR",
-          "OSWAL PARK",
-          "MAJIWADA NAKA",
-          "MUKTAI NAGAR",
-           "GOKUL NAGAR", 
-         "UTHALSAR NAKA",  
-         "CIVIL HOSPITAL", 
-          "CENTRAL MAIDAN",
-          "COURTNAKA",
-          "TALAO PALI",
-          "THANE STATION"
-      ],
-      [
-        "ANAND NAGAR",
-        "VIJAY NAGARI",
-        "WAGHBIL",
-        "DONGRI PADA",
-        "PATLI PADA",
-        "AZAD NAGAR",
-        "MULLA BAGH",
-        "MANPADA",
-        "LOCKIM COMPANY",
-        "HIDE PARK",
-        "KAPURBAWDI",
-        "ASHAPURA MANDIR",
-        "MAJIWADA",
-        "MUKTAI NAGAR",
-        "GOKUL NAGAR",
-        "CENTRAL MAIDAN",
-        "COURT NAKA",
-        "CIVIL COURT",
-        "TALAV PALI",
-        "THANE STATION"
-        ],
-        [ "VRUNDAVAN SOCIETY",
-          "SHREERANG SOCIETY",
-          "DESAI BANGLA",
-          "ABHIRUCHI",
-          "HOLY CROSS SCHOOL",
-          "POLICE LINE",
-          "CENTRAL MAIDAN",
-          "COURT NAKA",
-          "CIVIL COURT",
-          "TALAV PALI",
-          "THANE STATION"
-        ],
-        ["BORIVADE GAON",
-          "VIJAY NAGARI",
-        "WAGHBIL",
-        "DONGRI PADA",
-        "PATLI PADA",
-        "AZAD NAGAR",
-        "MULLA BAGH",
-        "MANPADA",
-        "LOCKIM COMPANY",
-        "HIDE PARK",
-        "KAPURBAWDI",
-        "ASHAPURA MANDIR",
-        "MAJIWADA",
-        "MUKTAI NAGAR",
-        "GOKUL NAGAR",
-        "CENTRAL MAIDAN",
-        "COURT NAKA",
-        "CIVIL COURT",
-        "TALAV PALI",
-        "THANE STATION"],
-        [ "KASARVADAVALI",
-          "SAINATH NAGAR",
-          "ANAND NAGAR",
-          "MUCHHALA COLLEGE",
-          "BATATA COMPANY",
-          "PANCHAMRIT",
-        "WAGHBIL",
-        "DONGRI PADA",
-        "PATLI PADA",
-        "AZAD NAGAR",
-        "MULLA BAGH",
-        "MANPADA",
-        "LOCKIM COMPANY",
-        "HIDE PARK",
-        "KAPURBAWDI",
-        "ASHAPURA MANDIR",
-        "MAJIWADA",
-        "MUKTAI NAGAR",
-        "GOKUL NAGAR",
-        "CENTRAL MAIDAN",
-        "COURT NAKA",
-        "CIVIL COURT",
-        "TALAV PALI",
-        "THANE STATION"],
-        [ "PARSIK NAGAR",
-          "VASTU ANAND",
-          "VIMAL NAGAR",
-          "RAJ PARK",
-          "PREM NAGAR",
-          "PARSIK SHIV MANDIR",
-          "KHARIGAON NAKA",
-          "DATTA WADI",
-          "SUKUR PARK",
-          "SAHYADRI SOCIETY",
-          "MANISHA NAGAR",
-          "KALWA BUS STATION",
-          "COURT NAKA",
-          "KANHAJI AGRH CHOWK",
-          "R.T.O OFFICE",
-          "CENTRAL MAIDAN",
-          "COURT NAKA",
-          "THANE STATION"],
-          ["WAGHBIL",
-        "DONGRI PADA",
-        "PATLI PADA",
-        "AZAD NAGAR",
-        "MULLA BAGH",
-        "MANPADA",
-        "LOCKIM COMPANY",
-        "HIDE PARK",
-        "KAPURBAWDI",
-        "ASHAPURA MANDIR",
-        "MAJIWADA",
-        "MUKTAI NAGAR",
-        "GOKUL NAGAR",
-        "CENTRAL MAIDAN",
-        "COURT NAKA",
-        "CIVIL COURT",
-        "TALAV PALI",
-        "THANE STATION"],
-        [ "UPVAN",
-          "SHIVAI NAGAR",
-          "DEVDAYA NAGAR",
-          "S.T. JUNA THAMBA",
-          "BUILDING NO. 3",
-          "VARTAK NAGAR NAKA",
-          "J.K. GRAM",
-          "CADBURY CO.",
-          "PUJANI ESTATE",
-          "KHOPAT",
-          "NEW SHAKTI MILL",
-          "SHISHU GYAN MANDIR",
-          "CIVIL HOSPITAL",
-          "CENTRAL MAIDAN",
-          "COURT NAKA",
-          "THANE STATION"]
-  ];
-
+ 
   useEffect(() => {
       changeBusStops(tmtBusStops[busRoute]);
   }, [busRoute]);
@@ -194,7 +41,6 @@ const RouteDrawer = ({ route }) => {
           <Drawer.Navigator>
               <Drawer.Screen name="RoutesList" component={Route} options={() => ({ headerShown: false })} />
               <Drawer.Screen name="Chat" component={Chat} options={() => ({ headerShown: false })} />
-              <Drawer.Screen name="Contribute" component={Contribute} options={() => ({ headerShown: false })} />
           </Drawer.Navigator>
       </BusContext.Provider>
   );

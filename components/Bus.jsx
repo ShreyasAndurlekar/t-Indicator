@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
-import { Animated, View } from 'react-native';
+import { Animated} from 'react-native';
 
-function Bus(props) {
+function Bus() {
   const opacity = useRef(new Animated.Value(0.5)).current;
 
   useEffect(() => {
@@ -31,7 +31,7 @@ function Bus(props) {
       style={{
         height: 20,
         width: 20,
-        backgroundColor: props.clr,
+        backgroundColor: "red",
         borderRadius: 20,
         opacity, // Bind animated opacity value
       }}
