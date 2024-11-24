@@ -34,6 +34,8 @@ const sendRouter = require('./routes/send');
 const messagesRouter = require('./routes/messages');
 const nearRouter = require('./routes/near')
 const displayRouter = require('./routes/display')
+const timeRouter = require('./routes/time')
+
 
 app.use('/', displayRouter);
 app.use('/accounts', accountsRouter);
@@ -41,6 +43,7 @@ app.use('/auth', authRouter);
 app.use('/messages', messagesRouter);
 app.use('/send', sendRouter);
 app.use('/near', nearRouter);
+app.use('/time',timeRouter)
 
 
 app.listen(port, () => {
