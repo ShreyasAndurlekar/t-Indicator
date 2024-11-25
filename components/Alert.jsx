@@ -14,4 +14,12 @@ const alertPolyfill = (title, description, options, extra) => {
 
 const alert = Platform.OS === 'web' ? alertPolyfill : Alert.alert
 
+export const showAlert_ = (title, description, options = []) => {
+    const buttons = options.length
+        ? options
+        : [{ text: 'OK', style: 'default' }, { text: 'Cancel', style: 'cancel' }]
+
+    alert(title, description, buttons)
+}
+
 export default alert

@@ -23,8 +23,6 @@ const SENDMESSAGE_URL = `${apiUrl}send`;
 const GETLOC_URL = `${apiUrl}near`;
 const GETTIME_URL = `${apiUrl}time`;
 
-console.log(apiUrl)
-
 export const getNearestLoc = async (location) => {
 
     try{
@@ -33,7 +31,6 @@ export const getNearestLoc = async (location) => {
             params: { location }
         })
 
-        console.log(response.data)
         return response.data;
     }
     catch (error) {
@@ -132,7 +129,6 @@ export const getTime = async ( location ) => {
             params: { location }
         })
 
-        //console.log("API Response",response.data)
         return response.data.timeAndDistance;
     }
     catch (error) {

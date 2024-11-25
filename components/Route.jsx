@@ -8,6 +8,7 @@ import calculateTimestamps from "../functions/extra.js";
 import { getTime, getNearestLoc } from "../functions/database";
 import * as Location from 'expo-location';
 import alert from '../components/Alert';
+import { showAlert_ } from "../components/Alert";
 
 const Route = () => {
     const { busStops } = useContext(BusContext);
@@ -32,15 +33,15 @@ const Route = () => {
             const timestamps = calculateTimestamps(eta, busStops.length - tempBusstopcount - 1);
             setArrayOfTimeStamps(timestamps);
 
-            console.log("Immediate timestamps:", timestamps);
         }
     }, [eta]);
 
     const getLocation = async () => {
-        console.log("getLocation triggered");
+
         let { status } = await Location.requestForegroundPermissionsAsync();
 
         if (status !== 'granted') {
+
             console.error('Permission to access location was denied');
             return;
         }
@@ -48,8 +49,6 @@ const Route = () => {
         let location = await Location.getCurrentPositionAsync({});
         const newloc = `${location.coords.latitude}, ${location.coords.longitude}`;
         const nearestLocBody = await getNearestLoc(newloc);
-
-      
 
         const nearestLoc = nearestLocBody.nearest;
         let ok = 0;
@@ -78,17 +77,19 @@ const Route = () => {
 
     useEffect(() => {
         if (showAlert) {
-            alert(
-                'Are you in the bus right now ?',
-                'Pressing OK will use your location to track bus',
+            showAlert_(
+                'Are you in this bus right now ?',
+                't-Indicator will use your location to track bus',
                 [
                     {
-                        text: 'OK',
+                        text: 'Yes',
                         onPress: () => {
                             setShowAlert(false); // Dismiss the alert
                             getLocation(); // Trigger location retrieval
                         },
+                        style: 'default'
                     },
+                    { text: 'No', onPress: () => setShowAlert(false) , style: 'cancel' },
                 ]
             );
         }

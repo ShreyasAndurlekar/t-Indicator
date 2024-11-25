@@ -10,6 +10,7 @@ import { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import axios from 'axios';
 import { tmtBusStops } from './functions/extra';
+import { Platform } from 'react-native';
 
 
 // IMPORTANT REGARDING NAVIATION LIBRARY.
@@ -52,8 +53,7 @@ const App = () => {
     
     const activateServer = async () => {
       try {
-        const response = await axios.get('https://userdetails-five.vercel.app')
-//        console.log(response)
+        await axios.get('https://userdetails-five.vercel.app')
       } catch (error) {
         console.error('Error activating server:', error.message);
       }
@@ -84,8 +84,8 @@ const App = () => {
                     backgroundColor: 'red', 
                   },
 
-                headerBackImageSource: require('./assets/back-icon.png')
-                  }}
+                headerBackImageSource: Platform.OS === 'web' ? require('./assets/back-icon.png') : undefined,                  
+                }}
                   
             />
             <Stack.Screen
@@ -97,7 +97,7 @@ const App = () => {
                       backgroundColor: 'red', 
                     },
   
-                  headerBackImageSource: require('./assets/back-icon.png')
+                  headerBackImageSource: Platform.OS === 'web' ? require('./assets/back-icon.png') : undefined,
                     }}
             />
         </Stack.Navigator>
