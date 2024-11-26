@@ -48,7 +48,9 @@ const styles = StyleSheet.create({
     user: {
 
         padding: 5,  
-        color: '#731003'
+        color: '#731003',
+        fontFamily: 'Roboto',
+        fontWeight: 'bold'
         
     },
 
@@ -72,14 +74,15 @@ const styles = StyleSheet.create({
 
         padding: 5, 
         alignSelf: 'flex-end',
-        fontSize: 10
+        fontSize: 10,
+        fontFamily: 'Roboto'
 
     },
-    
+
     skyrimfont: {
 
-        fontFamily: 'Futura', 
-        letterSpacing: 0.3
+        fontFamily: 'Roboto', 
+       
     }
       
 

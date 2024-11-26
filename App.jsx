@@ -12,7 +12,8 @@ import axios from 'axios';
 import { tmtBusStops } from './functions/extra';
 import { Platform } from 'react-native';
 import { useFonts } from 'expo-font';
-import * as SplashScreen from 'expo-splash-screen'; // Import SplashScreen
+import * as SplashScreen from 'expo-splash-screen'; 
+import WebFont from 'webfontloader';
 
 const Drawer = createDrawerNavigator();
 
@@ -41,7 +42,7 @@ const RouteDrawer = ({ route }) => {
 const App = () => {
   const [fontsLoaded] = useFonts({
     "Bahnschrift": require("./assets/fonts/BAHNSCHRIFT.ttf"),
-    "Futura": require('./assets/fonts/Futura Condensed Medium.otf')
+    "Roboto": require('./assets/fonts/Roboto-Light.ttf')
   });
 
   useEffect(() => {

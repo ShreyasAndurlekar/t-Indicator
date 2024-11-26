@@ -86,7 +86,7 @@ const Chat = () => {
         <View style={styles.root}>
         {chats.length === 0 ? (
             <View style={styles.cb}>
-                <Text style = {{margin: 10, fontFamily: 'Futura', letterSpacing: 0.3}}>{msgstatus}</Text>
+                <Text style = {{margin: 10, fontFamily: 'Roboto'}}>{msgstatus}</Text>
             </View>
         ) : (
             <ScrollView>
