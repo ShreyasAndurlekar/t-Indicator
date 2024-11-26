@@ -98,7 +98,6 @@ const Account = () => {
                             <View style={styles.b}>
                                 <Button title="Sign Up" onPress={handleSubmit} />
                             </View>
-                            <Button title="Login" onPress={() => setCurrentPage('login')} />
                         </>
                     )}
                     {currentPage === 'login' && (
@@ -122,6 +121,7 @@ const Account = () => {
                             <View style={styles.b}>
                                 <Button title="Sign In" onPress={handleSignIn} />
                             </View>
+                            <Text style = {{margin: 10, fontFamily: 'Bahnschrift'}}> or.. </Text>
                             <Button title="Sign Up" onPress={() => setCurrentPage('signup')} />
                         </>
                     )}
@@ -143,11 +143,14 @@ const styles = StyleSheet.create({
         paddingHorizontal: 24,
         width: 600,
         alignItems: 'center',
+        marginRight: 10
+        
     },
     sectionTitle: {
         fontWeight: '600',
         color: '#333',
         textAlign: 'center',
+        fontFamily: 'Bahnschrift'
     },
     input: {
         height: 40,
@@ -156,6 +159,7 @@ const styles = StyleSheet.create({
         marginBottom: 12,
         padding: 8,
         width: 200,
+        fontFamily: 'Bahnschrift'
     },
     b: {
         width: 100,

@@ -39,8 +39,7 @@ const Chat = () => {
 
         const fetchData = async () => {
 
-            const messagesarray = await retrieveMessages(routename) // remember to use await, if you did not use await, it would execute the next code without waiting
-            
+            const messagesarray = await retrieveMessages(routename) // remember to use await, if you did not use await, it would execute the next code without waitin
             if(messagesarray == undefined)
                 changeMsgStatus("No one has sent a message yet..")
             else
@@ -87,7 +86,7 @@ const Chat = () => {
         <View style={styles.root}>
         {chats.length === 0 ? (
             <View style={styles.cb}>
-                <Text style = {{margin: 10}}>{msgstatus}</Text>
+                <Text style = {{margin: 10, fontFamily: 'Futura', letterSpacing: 0.3}}>{msgstatus}</Text>
             </View>
         ) : (
             <ScrollView>
@@ -124,7 +123,7 @@ const Chat = () => {
                                 key={idx}>
                                 <Text style={styles.user}>~{chat.sender}</Text>
                                 <View style={styles.cm}>
-                                    <Text>{chat.message}</Text>
+                                    <Text style = {styles.skyrimfont}>{chat.message}</Text>
                                 </View>
                                 <Text style={styles.time}>{formattedTime}</Text>
                             </View>

@@ -100,7 +100,7 @@ export const retrieveMessages = async (routename) => {
     }
     catch (error) {
         console.error('Error retrieving messages:', error);
-        throw error;
+        return undefined
     }
 }
 

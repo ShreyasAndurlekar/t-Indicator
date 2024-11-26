@@ -74,6 +74,12 @@ const styles = StyleSheet.create({
         alignSelf: 'flex-end',
         fontSize: 10
 
+    },
+    
+    skyrimfont: {
+
+        fontFamily: 'Futura', 
+        letterSpacing: 0.3
     }
       
 

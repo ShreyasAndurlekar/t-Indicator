@@ -37,7 +37,8 @@ const styles = StyleSheet.create({
 
     bstext: {
 
-        fontSize: 20
+        fontSize: 20,
+        fontFamily: 'Bahnschrift'
     },
 
     bottom: {
@@ -86,6 +87,12 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center'
         
+    },
+
+    routestext: {
+
+        fontSize: 14,
+        fontFamily: 'Bahnschrift'
     }
 
 })

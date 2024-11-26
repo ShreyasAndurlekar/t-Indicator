@@ -13,7 +13,7 @@ const BusStop = ({ busRouteNo, busName }) => {
                 navigation.navigate("Route", { busRoute: busRouteNo });
             }}
         >
-            <Text style={{ fontWeight: 'bold' }}>{busName}</Text>
+            <Text style={styles.routestext}>{busName}</Text>
         </Pressable>
     );
 };
@@ -195,7 +195,7 @@ const Home = () => {
     return (
         <View style = {{flex: 1}}>
             <Navbar />
-            <View style={{ flexDirection: 'row', alignItems: 'center', margin: 12, borderWidth: 0.1, borderColor: 'lightgrey', padding: 5 }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', margin: 12, borderWidth: 1, borderColor: 'lightgrey', padding: 5 }}>
                     <TextInput
                         style={{ flex: 1, padding: 10, color: 'black' }}
                         placeholder="Search"

@@ -7,19 +7,20 @@ const navbar_styles = StyleSheet.create({
         flexDirection: 'row', 
         alignItems: 'center', 
         width: '100%',
-        height: 100,
+        height: 90,
         backgroundColor: 'red',
     },
 
     textContainer: {
         flex: 1, 
-        marginTop: 30
+        marginTop: 20
     },
 
     navtext: {
 
         fontSize: 20,
-        marginLeft: 20,
+        marginLeft: 10,
+        fontFamily: 'Bahnschrift'
        
     },
 
@@ -28,7 +29,7 @@ const navbar_styles = StyleSheet.create({
         marginRight: 10,
         width: 40,
         height: 40,
-        marginTop: 30
+        marginTop: 20
     },
 
     
