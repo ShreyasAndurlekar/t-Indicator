@@ -13,7 +13,6 @@ import { tmtBusStops } from './functions/extra';
 import { Platform } from 'react-native';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen'; 
-import WebFont from 'webfontloader';
 
 const Drawer = createDrawerNavigator();
 
