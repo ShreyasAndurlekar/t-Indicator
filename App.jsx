@@ -41,8 +41,7 @@ const RouteDrawer = ({ route }) => {
 
 const App = () => {
   const [fontsLoaded] = useFonts({
-    "Bahnschrift": require("./assets/fonts/BAHNSCHRIFT.ttf"),
-    "Roboto": require('./assets/fonts/Roboto-Light.ttf')
+    "Bahnschrift": require("./assets/fonts/BAHNSCHRIFT.ttf")
   });
 
   useEffect(() => {

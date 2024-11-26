@@ -86,7 +86,7 @@ const Chat = () => {
         <View style={styles.root}>
         {chats.length === 0 ? (
             <View style={styles.cb}>
-                <Text style = {{margin: 10, fontFamily: 'Roboto'}}>{msgstatus}</Text>
+                <Text style = {{margin: 10}}>{msgstatus}</Text>
             </View>
         ) : (
             <ScrollView>
@@ -123,7 +123,7 @@ const Chat = () => {
                                 key={idx}>
                                 <Text style={styles.user}>~{chat.sender}</Text>
                                 <View style={styles.cm}>
-                                    <Text style = {styles.skyrimfont}>{chat.message}</Text>
+                                    <Text>{chat.message}</Text>
                                 </View>
                                 <Text style={styles.time}>{formattedTime}</Text>
                             </View>

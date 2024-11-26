@@ -49,7 +49,6 @@ const styles = StyleSheet.create({
 
         padding: 5,  
         color: '#731003',
-        fontFamily: 'Roboto',
         fontWeight: 'bold'
         
     },
@@ -75,14 +74,7 @@ const styles = StyleSheet.create({
         padding: 5, 
         alignSelf: 'flex-end',
         fontSize: 10,
-        fontFamily: 'Roboto'
 
-    },
-
-    skyrimfont: {
-
-        fontFamily: 'Roboto', 
-       
     }
       
 
