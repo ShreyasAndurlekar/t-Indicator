@@ -6,6 +6,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { retrieveMessages, sendMessages } from '../functions/database';
 import { BusContext } from "../functions/bus";
 import alert from './Alert';
+import { LinearGradient } from 'expo-linear-gradient'; // Import the LinearGradient component
 
 const Chat = () => {
     const [entered_input, changeMsg] = useState("");
@@ -111,7 +112,10 @@ const Chat = () => {
                     </View>
                 </ScrollView>
             )}
-            <View style={styles.chatbar}>
+            <LinearGradient
+                colors={['#FFA500', '#edd328']} // Orange gradient colors
+                style={styles.chatbar}
+            >
                 <TextInput
                     style={styles.ib}
                     onChangeText={(val) => changeMsg(val)}
@@ -121,7 +125,7 @@ const Chat = () => {
                 <TouchableOpacity onPress={sendMessage}>
                     <Image source={sent} style={styles.ic} />
                 </TouchableOpacity>
-            </View>
+            </LinearGradient>
             <BottomBar />
         </View>
     );

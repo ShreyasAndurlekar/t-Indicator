@@ -25,8 +25,9 @@ const styles = StyleSheet.create({
     ib: {
 
         flexGrow: 1,
-        margin: 15,
-        backgroundColor: 'white'
+        margin: 12,
+        backgroundColor: 'white',
+        borderRadius: 10
 
 
     },
@@ -36,6 +37,7 @@ const styles = StyleSheet.create({
         margin: 12,
         height: 35,
         width: 35,
+        
     },
 
     overallcm: {
