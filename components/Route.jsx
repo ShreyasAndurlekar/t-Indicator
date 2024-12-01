@@ -1,5 +1,5 @@
-import { Text, View, ScrollView, Pressable } from "react-native";
-import styles from '../stylesheets/global'
+import { Text, View, ScrollView, Pressable, ActivityIndicator } from "react-native";
+import styles from '../stylesheets/global';
 import BottomBar from "./Bottom";
 import { useState, useContext, useEffect } from 'react';
 import { BusContext } from "../functions/bus";
@@ -19,6 +19,7 @@ const Route = () => {
     const [busstopcount, setBusstopcount] = useState(0);
     const [arrayOfTimeStamps, setArrayOfTimeStamps] = useState([]);
     const [showAlert, setShowAlert] = useState(false); // State to trigger alert
+    const [loading, setLoading] = useState(false); // State to track loading state
 
     useEffect(() => {
         if (eta) {
@@ -32,17 +33,17 @@ const Route = () => {
             setBusstopcount(tempBusstopcount);
             const timestamps = calculateTimestamps(eta, busStops.length - tempBusstopcount - 1);
             setArrayOfTimeStamps(timestamps);
-
         }
     }, [eta]);
 
     const getLocation = async () => {
+        setLoading(true); // Set loading to true when location retrieval starts
 
         let { status } = await Location.requestForegroundPermissionsAsync();
 
         if (status !== 'granted') {
-
             console.error('Permission to access location was denied');
+            setLoading(false); // Set loading to false if permission is denied
             return;
         }
 
@@ -61,12 +62,14 @@ const Route = () => {
             alert('TMT is restricted to Thane only!', `Nearest bus stop is ${nearestLoc}`, [
                 { text: 'OK', onPress: () => console.log('') },
             ]);
-            return
+            setLoading(false); // Set loading to false when alert is shown
+            return;
         } else {
             changeBusStop(nearestLoc);
         }
 
         setETA(nearestLocBody.timeAndDistance);
+        setLoading(false); // Set loading to false after processing the location
     };
 
     useEffect(() => {
@@ -118,6 +121,12 @@ const Route = () => {
                     </View>
                 ))}
             </ScrollView>
+
+            {loading && (
+                <View style={styles.loaderContainer}>
+                    <ActivityIndicator size="large" color="#0000ff" />
+                </View>
+            )}
 
             <BottomBar />
         </View>

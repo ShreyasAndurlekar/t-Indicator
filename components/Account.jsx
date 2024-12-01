@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { SafeAreaView, StyleSheet, View, Text, TextInput, Button, Image } from 'react-native';
+import { SafeAreaView, StyleSheet, View, Text, TextInput, Button, Image, ActivityIndicator } from 'react-native';
 import { createAccount, signIn, signOut } from '../functions/database';
 import { useNavigation } from '@react-navigation/native';
 import alert from './Alert';
@@ -10,7 +10,8 @@ const Account = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [storedUsername, setStoredUsername] = useState(null);
-    const [currentPage, setCurrentPage] = useState('login'); // Tracks the active page
+    const [currentPage, setCurrentPage] = useState('login');
+    const [isLoading, setIsLoading] = useState(false); // Track loading state
 
     useEffect(() => {
         async function userStatus() {
@@ -44,6 +45,8 @@ const Account = () => {
             return;
         }
 
+        setIsLoading(true); // Show ActivityIndicator
+
         try {
             const userData = await signIn({ username, password });
             setStoredUsername(username);
@@ -51,6 +54,8 @@ const Account = () => {
         } catch (error) {
             console.error('Error signing in:', error);
             alert('Error signing in:', 'Non-existent Password/User', [{ text: 'OK' }]);
+        } finally {
+            setIsLoading(false); // Hide ActivityIndicator
         }
     };
 
@@ -110,6 +115,9 @@ const Account = () => {
                                 placeholder="Username"
                                 value={username}
                                 onChangeText={setUsername}
+                                onSubmitEditing={() => {
+                                    if (password !== '') handleSignIn(); // Trigger handleSignIn only if password is not empty
+                                }}
                             />
                             <TextInput
                                 style={styles.input}
@@ -117,12 +125,15 @@ const Account = () => {
                                 secureTextEntry
                                 value={password}
                                 onChangeText={setPassword}
+                                onSubmitEditing={handleSignIn} // Trigger handleSignIn on pressing Enter
                             />
-                            <View style={styles.b}>
-                                <Button title="Sign In" onPress={handleSignIn} />
-                            </View>
+                            
                             <Text style = {{margin: 10, fontFamily: 'Bahnschrift'}}> or.. </Text>
                             <Button title="Sign Up" onPress={() => setCurrentPage('signup')} />
+
+                            {isLoading && (
+                                <ActivityIndicator size="large" color="#0000ff" style={styles.loader} />
+                            )}
                         </>
                     )}
                 </View>
@@ -144,7 +155,6 @@ const styles = StyleSheet.create({
         width: 600,
         alignItems: 'center',
         marginRight: 10
-        
     },
     sectionTitle: {
         fontWeight: '600',
@@ -164,6 +174,9 @@ const styles = StyleSheet.create({
     b: {
         width: 100,
         marginBottom: 10,
+    },
+    loader: {
+        marginTop: 20,
     },
 });
 
