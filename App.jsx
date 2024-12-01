@@ -44,17 +44,6 @@ const App = () => {
   });
 
   useEffect(() => {
-    const activateServer = async () => {
-      try {
-        await axios.get('https://userdetails-five.vercel.app');
-      } catch (error) {
-        console.error('Error activating server:', error.message);
-      }
-    };
-    activateServer();
-  }, []);
-
-  useEffect(() => {
     const prepare = async () => {
       // Keep the splash screen visible while fonts are loading
       await SplashScreen.preventAutoHideAsync();  // Prevent auto hide
