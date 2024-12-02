@@ -16,19 +16,16 @@ const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
 
 const RouteDrawer = ({ route }) => {
-  const { busRoute } = route.params; 
 
-  const [busStop, changeBusStop] = useState("Pawar Nagar"); 
+  const { busRoute } = route.params; 
   const [busStops, changeBusStops] = useState([]);
-  const [color, setColor] = useState("red");
-  const [eta, setETA] = useState();
 
   useEffect(() => {
     changeBusStops(tmtBusStops[busRoute]);
   }, [busRoute]);
 
   return (
-    <BusContext.Provider value={{ busStop, busStops, changeBusStop, setColor, color, eta, setETA }}>
+    <BusContext.Provider value={{ busStops }}>
       <Drawer.Navigator>
         <Drawer.Screen name="RoutesList" component={Route} options={() => ({ headerShown: false })} />
         <Drawer.Screen name="Chat" component={Chat} options={() => ({ headerShown: false })} />
@@ -38,15 +35,10 @@ const RouteDrawer = ({ route }) => {
 };
 
 const App = () => {
+
   const [fontsLoaded] = useFonts({
     "Bahnschrift": require("./assets/fonts/BAHNSCHRIFT.ttf")
   });
-
-
-
-  if (!fontsLoaded) {
-    return null; // Return null until the fonts are loaded, showing the splash screen
-  }
 
   return (
     <NavigationContainer>

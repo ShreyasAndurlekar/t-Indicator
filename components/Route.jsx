@@ -11,10 +11,10 @@ import alert from '../components/Alert';
 import { showAlert_ } from "../components/Alert";
 
 const Route = () => {
+    
     const { busStops } = useContext(BusContext);
-    const { busStop } = useContext(BusContext);
-    const { eta } = useContext(BusContext);
-    const { changeBusStop, setETA } = useContext(BusContext);
+    const [ busStop, changeBusStop ] = useState("Pawar Nagar");
+    const [ eta, setETA ] = useState(0)
     
     const [busstopcount, setBusstopcount] = useState(0);
     const [arrayOfTimeStamps, setArrayOfTimeStamps] = useState([]);
