@@ -1,7 +1,7 @@
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Image, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { LinearGradient } from 'expo-linear-gradient'; // Make sure this is imported
+import { LinearGradient } from 'expo-linear-gradient'; 
 import styles from '../stylesheets/global';
 
 const BottomBar = () => {
@@ -12,7 +12,7 @@ const BottomBar = () => {
 
     return (
             <LinearGradient
-                colors={['#edd328','#FFA500']} // Orange gradient colors
+                colors={['#edd328','#FFA500']} 
                 style={styles.bottom}
             >
                 <TouchableOpacity onPress={() => {navigation.navigate('RoutesList')}}>

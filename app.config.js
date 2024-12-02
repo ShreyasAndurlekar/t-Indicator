@@ -17,16 +17,14 @@ export default ({ config }) => ({
       "**/*"
     ],
     ios: {
-      supportsTablet: true,
-      newArchEnabled: true
+      supportsTablet: true
     },
     android: {
       adaptiveIcon: {
         foregroundImage: "./assets/adaptive-icon.png",
         backgroundColor: "#ffffff"
       },
-      package: "com.shreyaz.tmt",
-      newArchEnabled: true
+      package: "com.shreyaz.tmt"
     },
     web: {
       favicon: "./assets/favicon.png"

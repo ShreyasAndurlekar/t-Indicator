@@ -14,7 +14,7 @@ const Account = () => {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [storedUsername, setStoredUsername] = useState(null);
     const [currentPage, setCurrentPage] = useState('login');
-    const [isLoading, setIsLoading] = useState(false); // Track loading state
+    const [isLoading, setIsLoading] = useState(false); 
 
     useEffect(() => {
         async function userStatus() {
@@ -162,7 +162,7 @@ const Account = () => {
                                 value={username}
                                 onChangeText={setUsername}
                                 onSubmitEditing={() => {
-                                    if (password !== '') handleSignIn(); // Trigger handleSignIn only if password is not empty
+                                    if (password !== '') handleSignIn(); 
                                 }}
                             />
                             <TextInput
@@ -171,7 +171,7 @@ const Account = () => {
                                 secureTextEntry
                                 value={password}
                                 onChangeText={setPassword}
-                                onSubmitEditing={handleSignIn} // Trigger handleSignIn on pressing Enter
+                                onSubmitEditing={handleSignIn} 
                             />
                             
                             <Text style = {{margin: 10, fontFamily: 'Bahnschrift'}}> or.. </Text>

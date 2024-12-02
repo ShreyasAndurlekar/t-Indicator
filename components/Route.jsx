@@ -18,8 +18,8 @@ const Route = () => {
     
     const [busstopcount, setBusstopcount] = useState(0);
     const [arrayOfTimeStamps, setArrayOfTimeStamps] = useState([]);
-    const [showAlert, setShowAlert] = useState(false); // State to trigger alert
-    const [loading, setLoading] = useState(false); // State to track loading state
+    const [showAlert, setShowAlert] = useState(false); 
+    const [loading, setLoading] = useState(false); 
 
     useEffect(() => {
         if (eta) {
@@ -37,13 +37,13 @@ const Route = () => {
     }, [eta]);
 
     const getLocation = async () => {
-        setLoading(true); // Set loading to true when location retrieval starts
+        setLoading(true); 
 
         let { status } = await Location.requestForegroundPermissionsAsync();
 
         if (status !== 'granted') {
             console.error('Permission to access location was denied');
-            setLoading(false); // Set loading to false if permission is denied
+            setLoading(false); 
             return;
         }
 
@@ -62,20 +62,21 @@ const Route = () => {
             alert('TMT is restricted to Thane only!', `Nearest bus stop is ${nearestLoc}`, [
                 { text: 'OK', onPress: () => console.log('') },
             ]);
-            setLoading(false); // Set loading to false when alert is shown
+            setLoading(false); 
             return;
         } else {
             changeBusStop(nearestLoc);
         }
 
         setETA(nearestLocBody.timeAndDistance);
-        setLoading(false); // Set loading to false after processing the location
+        setLoading(false); 
     };
 
     useEffect(() => {
-        // Delay the alert until after the component is rendered
+
         const timer = setTimeout(() => setShowAlert(true), 500);
-        return () => clearTimeout(timer); // Cleanup timeout on unmount
+        return () => clearTimeout(timer); 
+        
     }, []);
 
     useEffect(() => {
@@ -87,8 +88,8 @@ const Route = () => {
                     {
                         text: 'Yes',
                         onPress: () => {
-                            setShowAlert(false); // Dismiss the alert
-                            getLocation(); // Trigger location retrieval
+                            setShowAlert(false); 
+                            getLocation(); 
                         },
                         style: 'default'
                     },

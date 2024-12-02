@@ -6,7 +6,7 @@ const GradientButton = ({ title, onPress }) => {
     return (
         <TouchableOpacity style={styles.buttonContainer} onPress={onPress}>
             <LinearGradient
-                colors={['#FF0000', '#FEB47B']} // Orange gradient colors
+                colors={['#FF0000', '#FEB47B']} 
                 start={[0, 0]} // Start at the top-left
                 end={[1, 0]} // End at the top-right
                 style={styles.gradient}>

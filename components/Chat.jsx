@@ -6,12 +6,11 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { retrieveMessages, sendMessages } from '../functions/database';
 import { BusContext } from "../functions/bus";
 import alert from './Alert';
-import { LinearGradient } from 'expo-linear-gradient'; // Import the LinearGradient component
 
 const Chat = () => {
     const [entered_input, changeMsg] = useState("");
     const [msgstatus, changeMsgStatus] = useState("");
-    const [isLoading, setIsLoading] = useState(true); // New state to track loading status
+    const [isLoading, setIsLoading] = useState(true); 
     
     const sent = require('../assets/send.png');
     const [storedUsername, setStoredUsername] = useState('guest');
@@ -31,15 +30,15 @@ const Chat = () => {
         };
 
         const fetchData = async () => {
-            setIsLoading(true); // Start loading
+            setIsLoading(true); 
             const messagesarray = await retrieveMessages(routename);
             if (messagesarray == undefined) {
                 changeMsgStatus("No one has sent a message yet..");
             } else {
                 changeChats(messagesarray);
-                changeMsgStatus(""); // Clear loading message
+                changeMsgStatus(""); 
             }
-            setIsLoading(false); // End loading
+            setIsLoading(false); 
         };
 
         fetchUsername();
