@@ -10,7 +10,6 @@ import { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { tmtBusStops } from './functions/extra';
 import { Platform } from 'react-native';
-import { useFonts } from 'expo-font';
 
 const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
@@ -35,10 +34,6 @@ const RouteDrawer = ({ route }) => {
 };
 
 const App = () => {
-
-  const [fontsLoaded] = useFonts({
-    "Bahnschrift": require("./assets/fonts/BAHNSCHRIFT.ttf")
-  });
 
   return (
     <NavigationContainer>

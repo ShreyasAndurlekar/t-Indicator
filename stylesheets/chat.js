@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     chatbar: {
 
         width: '100%',
-        backgroundColor: 'green',
+        backgroundColor: '#edd328',
         height: 60,
         flexDirection: 'row'
     },

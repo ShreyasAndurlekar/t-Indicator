@@ -112,10 +112,7 @@ const Chat = () => {
                     </View>
                 </ScrollView>
             )}
-            <LinearGradient
-                colors={['#FFA500', '#edd328']} // Orange gradient colors
-                style={styles.chatbar}
-            >
+            <View style = {styles.chatbar}>
                 <TextInput
                     style={styles.ib}
                     onChangeText={(val) => changeMsg(val)}
@@ -125,7 +122,7 @@ const Chat = () => {
                 <TouchableOpacity onPress={sendMessage}>
                     <Image source={sent} style={styles.ic} />
                 </TouchableOpacity>
-            </LinearGradient>
+            </View>
             <BottomBar />
         </View>
     );
