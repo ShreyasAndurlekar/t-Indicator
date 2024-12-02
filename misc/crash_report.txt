@@ -1,0 +1,63 @@
+1 21:16:38.924 22810 22810 E unknown:SurfaceMountingManager: <RCTView id=254 parentTag=90 isRoot=false />
+12-01 21:16:38.924 22810 22810 E unknown:FabricUIManager: Exception thrown when executing UIFrameGuarded
+12-01 21:16:38.924 22810 22810 E unknown:FabricUIManager: java.lang.IllegalStateException: Cannot remove child at index 0 from parent ViewGroup [154], only 1 children in parent. Warning: childCount may be incorrect!
+12-01 21:16:38.924 22810 22810 E unknown:FabricUIManager:       at com.facebook.react.fabric.mounting.SurfaceMountingManager.removeViewAt(SurfaceMountingManager.java:588)
+12-01 21:16:38.924 22810 22810 E unknown:FabricUIManager:       at com.facebook.react.fabric.mounting.mountitems.IntBufferBatchMountItem.execute(IntBufferBatchMountItem.java:121)
+12-01 21:16:38.924 22810 22810 E unknown:FabricUIManager:       at com.facebook.react.fabric.mounting.MountItemDispatcher.executeOrEnqueue(MountItemDispatcher.java:387)
+12-01 21:16:38.924 22810 22810 E unknown:FabricUIManager:       at com.facebook.react.fabric.mounting.MountItemDispatcher.dispatchMountItems(MountItemDispatcher.java:293)
+12-01 21:16:38.924 22810 22810 E unknown:FabricUIManager:       at com.facebook.react.fabric.mounting.MountItemDispatcher.tryDispatchMountItems(MountItemDispatcher.java:126)
+12-01 21:16:38.924 22810 22810 E unknown:FabricUIManager:       at com.facebook.react.fabric.FabricUIManager$DispatchUIFrameCallback.doFrameGuarded(FabricUIManager.java:1388)
+12-01 21:16:38.924 22810 22810 E unknown:FabricUIManager:       at com.facebook.react.fabric.GuardedFrameCallback.doFrame(GuardedFrameCallback.kt:22)
+12-01 21:16:38.924 22810 22810 E unknown:FabricUIManager:       at com.facebook.react.modules.core.ReactChoreographer.frameCallback$lambda$1(ReactChoreographer.kt:60)
+12-01 21:16:38.924 22810 22810 E unknown:FabricUIManager:       at com.facebook.react.modules.core.ReactChoreographer.$r8$lambda$nSkFhrr5T7rop_XKwzlLov4NLLw(Unknown Source:0)
+12-01 21:16:38.924 22810 22810 E unknown:FabricUIManager:       at com.facebook.react.modules.core.ReactChoreographer$$ExternalSyntheticLambda0.doFrame(D8$$SyntheticClass:0)
+12-01 21:16:38.924 22810 22810 E unknown:FabricUIManager:       at android.view.Choreographer$CallbackRecord.run(Choreographer.java:909)
+12-01 21:16:38.924 22810 22810 E unknown:FabricUIManager:       at android.view.Choreographer.doCallbacks(Choreographer.java:723)
+12-01 21:16:38.924 22810 22810 E unknown:FabricUIManager:       at android.view.Choreographer.doFrame(Choreographer.java:655)
+12-01 21:16:38.924 22810 22810 E unknown:FabricUIManager:       at android.view.Choreographer$FrameDisplayEventReceiver.run(Choreographer.java:897)
+12-01 21:16:38.924 22810 22810 E unknown:FabricUIManager:       at android.os.Handler.handleCallback(Handler.java:789)
+12-01 21:16:38.924 22810 22810 E unknown:FabricUIManager:       at android.os.Handler.dispatchMessage(Handler.java:98)
+12-01 21:16:38.924 22810 22810 E unknown:FabricUIManager:       at android.os.Looper.loop(Looper.java:164)
+12-01 21:16:38.924 22810 22810 E unknown:FabricUIManager:       at android.app.ActivityThread.main(ActivityThread.java:6944)
+12-01 21:16:38.924 22810 22810 E unknown:FabricUIManager:       at java.lang.reflect.Method.invoke(Native Method)
+12-01 21:16:38.924 22810 22810 E unknown:FabricUIManager:       at com.android.internal.os.Zygote$MethodAndArgsCaller.run(Zygote.java:327)
+12-01 21:16:38.924 22810 22810 E unknown:FabricUIManager:       at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1374)
+12-01 21:16:38.924 22810 22810 E unknown:FabricUIManager: Caused by: java.lang.IndexOutOfBoundsException
+12-01 21:16:38.924 22810 22810 E unknown:FabricUIManager:       at android.view.ViewGroup.removeViewsInternal(ViewGroup.java:5515)
+12-01 21:16:38.924 22810 22810 E unknown:FabricUIManager:       at android.view.ViewGroup.removeViewsInLayout(ViewGroup.java:5366)
+12-01 21:16:38.924 22810 22810 E unknown:FabricUIManager:       at com.facebook.react.views.view.ReactViewGroup.removeViewsInLayout(ReactViewGroup.java:639)
+12-01 21:16:38.924 22810 22810 E unknown:FabricUIManager:       at com.facebook.react.views.view.ReactViewGroup.removeViewWithSubviewClippingEnabled(ReactViewGroup.java:772)
+12-01 21:16:38.924 22810 22810 E unknown:FabricUIManager:       at com.facebook.react.views.view.ReactClippingViewManager.removeViewAt(ReactClippingViewManager.java:77)
+12-01 21:16:38.924 22810 22810 E unknown:FabricUIManager:       at com.facebook.react.views.view.ReactClippingViewManager.removeViewAt(ReactClippingViewManager.java:21)
+12-01 21:16:38.924 22810 22810 E unknown:FabricUIManager:       at com.facebook.react.fabric.mounting.SurfaceMountingManager.removeViewAt(SurfaceMountingManager.java:563)
+12-01 21:16:38.924 22810 22810 E unknown:FabricUIManager:       ... 20 more
+12-01 21:16:38.924 22810 22810 W unknown:BridgelessReact: ReactHost{0}.handleHostException(message = "Cannot remove child at index 0 from parent ViewGroup [154], only 1 children in parent. Warning: childCount may be incorrect!")
+12-01 21:16:38.925 22810 22849 W unknown:BridgelessReact: ReactHost{0}.getOrCreateDestroyTask()
+12-01 21:16:38.925 22810 22849 W unknown:BridgelessReact: ReactHost{0}.raiseSoftException(getOrCreateDestroyTask()): handleHostException(message = "Cannot remove child at index 0 from parent ViewGroup [154], only 1 children in parent. Warning: childCount may be incorrect!")
+12-01 21:16:38.926 22810 22849 E unknown:ReactHost: Unhandled SoftException
+12-01 21:16:38.926 22810 22849 E unknown:ReactHost: com.facebook.react.bridge.ReactNoCrashSoftException: raiseSoftException(getOrCreateDestroyTask()): handleHostException(message = "Cannot remove child at index 0 from parent ViewGroup [154], only 1 children in parent. Warning: childCount may be incorrect!")
+12-01 21:16:38.926 22810 22849 E unknown:ReactHost:     at com.facebook.react.runtime.ReactHostImpl.raiseSoftException(ReactHostImpl.java:942)
+12-01 21:16:38.926 22810 22849 E unknown:ReactHost:     at com.facebook.react.runtime.ReactHostImpl.getOrCreateDestroyTask(ReactHostImpl.java:1575)
+12-01 21:16:38.926 22810 22849 E unknown:ReactHost:     at com.facebook.react.runtime.ReactHostImpl.lambda$destroy$7(ReactHostImpl.java:541)
+12-01 21:16:38.926 22810 22849 E unknown:ReactHost:     at com.facebook.react.runtime.ReactHostImpl.$r8$lambda$uso21_D6dCZdcf-JomVD56kdG4c(Unknown Source:0)
+12-01 21:16:38.926 22810 22849 E unknown:ReactHost:     at com.facebook.react.runtime.ReactHostImpl$$ExternalSyntheticLambda37.call(D8$$SyntheticClass:0)
+12-01 21:16:38.926 22810 22849 E unknown:ReactHost:     at com.facebook.react.runtime.internal.bolts.Task$2.run(Task.java:240)
+12-01 21:16:38.926 22810 22849 E unknown:ReactHost:     at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1162)
+12-01 21:16:38.926 22810 22849 E unknown:ReactHost:     at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:636)
+12-01 21:16:38.926 22810 22849 E unknown:ReactHost:     at java.lang.Thread.run(Thread.java:764)
+12-01 21:16:38.926 22810 22849 E unknown:ReactHost: Caused by: java.lang.IllegalStateException: Cannot remove child at index 0 from parent ViewGroup [154], only 1 children in parent. Warning: childCount may be incorrect!
+ReactHost{0}.getOrCreateDestroyTask(): Destroying MemoryPressureRouter
+12-01 21:16:38.998 22810 22810 W unknown:BridgelessReact: ReactHost{0}.getOrCreateDestroyTask(): Resetting ReactContext ref
+12-01 21:16:38.998 22810 22810 W unknown:BridgelessReact: ReactHost{0}.getOrCreateDestroyTask(): Destroying ReactContext
+12-01 21:16:38.999 22810 22849 W unknown:BridgelessReact: ReactHost{0}.getOrCreateDestroyTask(): Resetting ReactInstance ptr
+12-01 21:16:38.999 22810 22849 W unknown:BridgelessReact: ReactHost{0}.getOrCreateDestroyTask(): Destroying ReactInstance
+12-01 21:16:39.006 22810 22849 I ExpoModulesCore: ✅ ModuleRegistry was destroyed
+12-01 21:16:39.013 22810 22849 I ExpoModulesCore: ✅ AppContext was destroyed
+12-01 21:16:39.013 22810 22849 I ExpoModulesCore: ✅ KotlinInteropModuleRegistry was destroyed
+12-01 21:16:39.014 22810 22849 W unknown:ReactNative: Tried to enqueue runnable on already finished thread: 'v_native... dropping Runnable.
+12-01 21:16:39.014 22810 22849 W unknown:ReactNative: Tried to enqueue runnable on already finished thread: 'v_native... dropping Runnable.
+12-01 21:16:39.015 22810 22849 E unknown:ReactNative: Tried to remove non-existent frame callback
+12-01 21:16:39.016 22810 22849 W ReactNativeJNI: Scheduler::~Scheduler() was called (address: 0x78c9a8da20).
+12-01 21:16:39.020 22810 22849 W unknown:ReactNative: Tried to enqueue runnable on already finished thread: 'v_native... dropping Runnable.
+12-01 21:16:39.033 22810 22849 I chatty  : uid=12547(u0_a2547) pool-1-thread-1 identical 16 lines
+12-01 21:16:39.033 22810 22849 W unknown:ReactNative: Tried to enqueue runnable on already finished thread: 'v_native... dropping Runnable.

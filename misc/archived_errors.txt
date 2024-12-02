@@ -1,0 +1,16 @@
+#1 IMPORTANT REGARDING NAVIATION LIBRARY.
+
+You need to add the react-native-screens and react-native-safe-area-context dependency 
+when using navigation dependency otherwise apk won't work
+
+#2 HOW TO MODIFY ANDROID STATUS BAR PROPERTY
+
+Set a property called  "androidStatusBar": {"translucent": true } in app.json. 
+I think you can use StatusBar dependency as well but just in case it fails, 
+I can't be bothered to make another apk and it worked acc to one guy on stackoverflow
+
+#3 REACT NATIVE NEW ARCHITECTURE
+
+Next time remember to isolate commits like these..
+This app crashes when unmounting nested DrawerNavigator in the new architecure released in October 2024
+Do not set newArchEnabled: true
