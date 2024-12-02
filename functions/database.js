@@ -4,18 +4,6 @@ import Constants from 'expo-constants';
 
 const apiUrl = Constants.expoConfig.extra.apiUrl;
 
-
-const activateServer = async () => {
-      try {
-        await axios.get(`${apiUrl}`)
-      } catch (error) {
-        console.error('Error activating server:', error.message);
-      }
-    };
-  
-activateServer()   
-
-
 const API_URL = `${apiUrl}accounts`;
 const SIGNIN_API_URL = `${apiUrl}auth`;
 const RETRIEVEMESSAGES_URL = `${apiUrl}messages`;

@@ -2,7 +2,7 @@ import 'dotenv/config';
 
 export default ({ config }) => ({
   ...config,
-  name: "tmt",
+  name: "t-Indicator",
   slug: "tmt",
   version: "1.0.0",
   orientation: "portrait",

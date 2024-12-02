@@ -8,13 +8,12 @@ import Account from './components/Account';
 import { BusContext } from './functions/bus';
 import { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import axios from 'axios';
 import { tmtBusStops } from './functions/extra';
 import { Platform } from 'react-native';
 import { useFonts } from 'expo-font';
-import * as SplashScreen from 'expo-splash-screen'; 
 
 const Drawer = createDrawerNavigator();
+const Stack = createNativeStackNavigator();
 
 const RouteDrawer = ({ route }) => {
   const { busRoute } = route.params; 
@@ -43,26 +42,7 @@ const App = () => {
     "Bahnschrift": require("./assets/fonts/BAHNSCHRIFT.ttf")
   });
 
-  useEffect(() => {
-    const prepare = async () => {
-      // Keep the splash screen visible while fonts are loading
-      await SplashScreen.preventAutoHideAsync();  // Prevent auto hide
-    };
 
-    prepare();
-  }, []);
-
-  useEffect(() => {
-    const hideSplashScreen = async () => {
-      if (fontsLoaded) {
-        await SplashScreen.hideAsync(); // Hide splash screen once fonts are loaded
-      }
-    };
-
-    hideSplashScreen();
-  }, [fontsLoaded]);
-
-  const Stack = createNativeStackNavigator();
 
   if (!fontsLoaded) {
     return null; // Return null until the fonts are loaded, showing the splash screen
