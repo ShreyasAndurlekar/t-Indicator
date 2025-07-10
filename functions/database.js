@@ -1,15 +1,13 @@
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import Constants from 'expo-constants';
+import { API_URL } from '@env';
 
-const apiUrl = Constants.expoConfig.extra.apiUrl;
-
-const API_URL = `${apiUrl}accounts`;
-const SIGNIN_API_URL = `${apiUrl}auth`;
-const RETRIEVEMESSAGES_URL = `${apiUrl}messages`;
-const SENDMESSAGE_URL = `${apiUrl}send`;
-const GETLOC_URL = `${apiUrl}near`;
-const GETTIME_URL = `${apiUrl}time`;
+const API_URLL = `${API_URL}accounts`;
+const SIGNIN_API_URL = `${API_URL}auth`;
+const RETRIEVEMESSAGES_URL = `${API_URL}messages`;
+const SENDMESSAGE_URL = `${API_URL}send`;
+const GETLOC_URL = `${API_URL}near`;
+const GETTIME_URL = `${API_URL}time`;
 
 export const getNearestLoc = async (location) => {
 
@@ -48,7 +46,7 @@ export const signIn = async (credentials) => {
 
 export const createAccount = async (account) => {
     try {
-        const response = await axios.post(API_URL, account);
+        const response = await axios.post(API_URLL, account);
         return response.data;
     } catch (error) {
         console.error('Error creating account:', error);
